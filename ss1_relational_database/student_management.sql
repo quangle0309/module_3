@@ -1,22 +1,26 @@
-create database demo;
+create database student_managerment;
 
-use demo;
+use student_managerment;
 
-create table Student (
+create table student (
 id int,
 name varchar(200),
 age int,
 country varchar(50)
 );
 
-create table Class (
+create table class (
 id int,
 name varchar(200)
 );
 
-create table Teacher (
+create table teacher (
 id int,
 name varchar(200),
 age int,
 country varchar(50)
-)
+);
+
+insert into class(id, name) values(1, "C0324H1"),(2, "C0324H1");
+
+select * from class;
