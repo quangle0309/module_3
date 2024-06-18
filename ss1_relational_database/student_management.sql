@@ -1,6 +1,6 @@
-create database student_managerment;
+create database student_management;
 
-use student_managerment;
+use student_management;
 
 create table student (
 id int,
