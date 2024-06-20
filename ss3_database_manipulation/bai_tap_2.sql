@@ -55,8 +55,8 @@ where `order`.o_date is null;
 select 
 customer.c_name,
 `order`.c_id as "Mã hóa đơn", 
- `order`.o_date, 
- (product.p_price * order_detail.od_quantity) as total_price
+`order`.o_date,
+ sum(product.p_price * order_detail.od_quantity) as total_price
 from customer
 join `order` 
 on `order`.c_id = customer.c_id
@@ -64,4 +64,7 @@ join order_detail
 on order_detail.o_id = `order`.o_id
 join product
 on product.p_id = order_detail.p_id
+group by customer.c_name, `order`.o_date, `order`.c_id
 order by customer.c_id asc;
+
+use quan_ly_ban_hang
