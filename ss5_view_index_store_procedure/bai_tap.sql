@@ -48,6 +48,7 @@ BEGIN
 END //
 DELIMITER ;
 
+-- Tạo Stored Procedure Thêm Một Sản Phẩm Mới
 DELIMITER //
 CREATE PROCEDURE add_product(
     in new_code NVARCHAR(50),
@@ -65,6 +66,7 @@ DELIMITER ;
 
 CALL add_product ('P4', 'Product 4', 70.00, 95, 'Description 4', 'Available');
 
+-- Tạo stored procedure sửa thông tin sản phẩm theo id
 DELIMITER //
 CREATE PROCEDURE update_product(
     in id INT,
@@ -89,6 +91,7 @@ DELIMITER ;
 
 CALL update_product(1, 'P1', 'Product one', 99.99, 10, 'Description one', 'not Available');
 
+-- Tạo stored procedure xóa sản phẩm theo id
 DELIMITER //
 CREATE PROCEDURE DeleteProduct(
     in id INT
