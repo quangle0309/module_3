@@ -14,9 +14,18 @@ hr {
     margin-top: 4px;
 }
 
+#first-text {
+    margin: 8px 0 10px 0;
+}
+
 .text {
     text-indent: 30px;
     text-align: justify;
+    line-height: 1.4;
+}
+
+#text-1 {
+    margin-top: 0;
 }
 
 .bold {
