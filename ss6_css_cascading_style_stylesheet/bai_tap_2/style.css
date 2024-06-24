@@ -1,0 +1,40 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    width: 50%;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+hr {
+    margin-top: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#color-blue {
+    color: #0171c7;
+}
+
+.color-bl {
+    color: #1406cb;
+    cursor: pointer;
+}
+
+.note {
+    font-size: smaller;
+    vertical-align: super;
+    color: #1205b6;
+
+}
+
+.note-none-color {
+    font-size: smaller;
+    vertical-align: super;
+}
