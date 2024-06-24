@@ -11,7 +11,12 @@ h1 {
 }
 
 hr {
-    margin-top: 0;
+    margin-top: 4px;
+}
+
+.text {
+    text-indent: 30px;
+    text-align: justify;
 }
 
 .bold {
@@ -31,10 +36,11 @@ hr {
     font-size: smaller;
     vertical-align: super;
     color: #1205b6;
-
+    cursor: pointer;
 }
 
 .note-none-color {
     font-size: smaller;
     vertical-align: super;
 }
+
