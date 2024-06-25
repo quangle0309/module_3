@@ -12,10 +12,11 @@ html {
     flex-direction: column;
     text-align: center;
     background-color: #fff3c4;
-    width: 600px;
+    width: 44%;
     border-radius: 10px;
     margin: 30px 0 30px 0;
     box-shadow: 0 6px 12px 0 #b7b7b7;
+    min-width: 400px;
 }
 
 .header {
@@ -32,6 +33,7 @@ html {
 
 .list-item {
     padding-left: 0;
+    width: 80%;
 }
 
 .list-item li {
@@ -51,13 +53,13 @@ html {
 .list-item li a {
     padding: 20px 0;
     border-radius: 10px;
-    width: 500px;
+    width: 100%;
     display: inline-block;
     color: black;
     font-weight: lighter;
     text-decoration: none;
     font-size: 1.2rem;
-    transition: 0.4s;
+    transition: 0.3s;
     box-shadow: 0 2px 6px 0 #707070;
 }
 
