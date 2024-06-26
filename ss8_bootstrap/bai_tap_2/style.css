@@ -102,5 +102,46 @@
 .sub-title-content h1 {
     font-size: 70px;
     color: #0e1726;
-    margin-top: 100px;
+    margin-top: 80px;
+}
+
+.image-product {
+    border-radius: 20px;
+}
+
+.form-content-body {
+    margin-top: 70px !important;
+}
+
+.form-product {
+    background-color: #f2f2f2;
+    border-radius: 15px;
+}
+
+.form-product img {
+    width: 100%;
+    border-radius: 15px ;
+}
+
+.form-product a {
+    color: white;
+    background-color: #0736c3;
+}
+
+.form-product a:hover {
+    color: white;
+    background-color: #002f9b;
+}
+
+#form-product {
+    background-color: #f0eadd;
+}
+
+.form-footer {
+    margin-top: 80px;
+    background-color: #f2f2f2;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
 }
