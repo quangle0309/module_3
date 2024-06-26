@@ -1,0 +1,37 @@
+.mlsd-bg-gray-e3e3e3,.mlsd-bg-gray-e3e3e3 .feature .row,.mlsd-bg-gray-e3e3e3 .cards .card,.mlsd-bg-gray-e3e3e3 .bg-gray-200,.mlsd-bg-gray-e3e3e3 .material-color-neutral-100{background:#e3e3e3 !important}
+.MLSD .surface-page-full-bleed .cmp-tabs>.container,.MLSD .surface-page-full-bleed .cmp-tabs>.sticky-direction-top>.container{padding:0 !important;width:100% !important;max-width:100% !important}
+.MLSD .surface-page-full-bleed .featured-carousel .appshowcasevideo>.container{width:100% !important;max-width:100% !important}
+.MLSD .surface-page-full-bleed .cmp-tabs>.container>.row,.MLSD .surface-page-full-bleed .cmp-tabs>.container>.row .col-12,.MLSD .surface-page-full-bleed .cmp-tabs>.sticky-direction-top>.container>.row{margin:0 !important;padding:0 !important}
+.MLSD .surface-page-full-bleed .cmp-tabs .area-heading{flex-direction:column;align-items:center;margin:0}
+.MLSD .surface-page-full-bleed .cmp-tabs .area-heading .row{display:block !important}
+.MLSD .surface-page-full-bleed .cmp-tabs .area-heading .row .col-md-8{max-width:100%}
+#where-to-buy.c-uhf-nav-link,#surface-deals-new.c-uhf-nav-link{background-color:#0067b8 !important;color:#fff;padding-top:5px !important;padding-bottom:5px !important}
+#where-to-buy.c-uhf-nav-link{visibility:hidden}
+@media screen and (min-width:768px) and (max-width:1083px){.padding-15{padding:0 15% !important}
+}
+@media screen and (max-width:767px){.padding-15{padding:0 5% !important}
+}
+@media screen and (max-width:1083px){.MLSD .surface-page-full-bleed .cmp-tabs .product-showcase.theme-light,.MLSD .surface-page-full-bleed .cmp-tabs .container .areaheading,.MLSD .surface-page-full-bleed .cmp-tabs .tabbed-feature-bg .tabbed-feature,.MLSD .surface-page-full-bleed .cmp-tabs .footnotes-component,.MLSD .surface-page-full-bleed .cmp-tabs .tab-content .cmp-tabs__tabpanel+.cmp-tabs__tabpanel .content-card,.MLSD .surface-page-full-bleed .cmp-tabs .tab-content .cmp-tabs__tabpanel+.cmp-tabs__tabpanel .table-container{padding:0 3rem !important}
+.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout2 h3,.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout2 p{padding-left:1.5rem !important}
+.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout3 h3,.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout3 p{padding-right:1.5rem !important}
+}
+@media screen and (max-width:768px){.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__heading,.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout4 h3,.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout4 p{padding-left:1.5rem !important}
+}
+@media screen and (max-width:768px){.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__heading h2{padding-left:1.5rem !important}
+.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__heading p{padding-left:4rem !important}
+}
+@media screen and (max-width:1083px){html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .product-showcase.theme-light,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .container .areaheading,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .tabbed-feature-bg .tabbed-feature,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .footnotes-component,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .tab-content .cmp-tabs__tabpanel+.cmp-tabs__tabpanel .content-card,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .tab-content .cmp-tabs__tabpanel+.cmp-tabs__tabpanel .table-container{padding:0 3rem !important}
+html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout2 h3,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout2 p{padding-right:1.5rem !important}
+html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout3 h3,html[dir=rtl] .MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout3 p{padding-left:1.5rem !important}
+}
+@media screen and (max-width:768px){html[dir=rtl] .MLSD.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__heading,html[dir=rtl] .MLSD.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout4 h3,html[dir=rtl] .MLSD.MLSD .surface-page-full-bleed .cmp-tabs .userstory .userstory__callout4 p{padding-right:1.5rem !important}
+}
+@media screen and (max-width:1919px){.MLSD .userstory .userstory__callout2 h3,.MLSD .userstory .userstory__callout2 p{padding-left:15px}
+}
+@media only screen and (min-width:1084px){.video-content-width-change .video-hero .video-hero-bottom-content.right .hero-content-bottom,.video-content-width-change .video-hero .video-hero-bottom-content.right .hero-content-bottom{width:30% !important}
+}
+.hotspot-36 .hotspot{width:36px !important;height:36px !important}
+.hotspot-36 .popover .close{width:48px !important;height:48px !important}
+@media only screen and (max-width:859.99px){.hotspot-36 .hotspot{height:1.5rem !important;width:1.5rem !important}
+.hotspot-36 .popover .close{height:1.5rem !important;width:1.5rem !important}
+}

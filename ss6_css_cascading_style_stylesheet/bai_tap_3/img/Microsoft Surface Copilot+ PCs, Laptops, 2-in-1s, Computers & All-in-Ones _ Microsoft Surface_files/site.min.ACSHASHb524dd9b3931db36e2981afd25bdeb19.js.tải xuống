@@ -1,0 +1,367 @@
+var chatAvatar = $(".chatBox").attr('data-chatavatar');
+var chatBotEndPointyUrl = $(".chatBox").attr('data-endpointurl');
+async function RefreshSession() {
+  await RefreshChat();
+}
+async function RefreshChat() {
+  $(".chatBox .chat-container").find('#webchat').remove();
+  $(".chatBox .chat-container").append('<div id="webchat" role="main"></div>');
+  loadChatBot();
+}
+// Reference : https://github.com/microsoft/BotFramework-WebChat/blob/main/packages/api/src/defaultStyleOptions.ts
+const styleOptions = {
+
+  hideUploadButton: true,
+  bubbleBackground: 'linear-gradient(to left, #ffffff, #ffffff);', //bot
+  bubbleTextColor: 'black',
+  bubbleFromUserBackground: 'linear-gradient(to left, rgba(255,0,0,0), rgba(102, 176, 233, 0.541))',
+  bubbleFromUser: 'black',
+  timestampColor: 'black',
+  sendBoxBackground: '#e6e6fa',
+  botAvatarBackgroundColor: '#252323',
+  botAvatarImage: chatAvatar,
+  suggestedActionLayout: 'stacked',
+  suggestedActionBorderRadius: 5
+}
+
+const adaptiveCardHostConfig = {
+  "choiceSetInputValueSeparator": ", ",
+  "imageSizes": {
+    "small": 48,
+    "medium": 80,
+    "large": 160
+  },
+};
+async function CreateDirectline() {
+  const tokenEndpointURL = new URL(chatBotEndPointyUrl);
+  const apiVersion = tokenEndpointURL.searchParams.get('api-version');
+  const [directLineURL, token] = await Promise.all([
+    fetch(new URL(`/powervirtualagents/regionalchannelsettings?api-version=${apiVersion}`, tokenEndpointURL))
+      .then(response => response.json())
+      .then(({
+        channelUrlsById: {
+          directline
+        }
+      }) => directline),
+    fetch(tokenEndpointURL)
+      .then(response => response.json())
+      .then(({
+        token
+      }) => token)
+  ]);
+  const directLine = WebChat.createDirectLine({
+    domain: new URL('v3/directline', directLineURL),
+    token
+  });
+  return directLine;
+}
+async function clearAndCloseChat() {
+  const closeButton = document.querySelector(".chatbot-close");
+  await RefreshChat();
+  closeButton.click();
+}
+
+function hasAttachmentId(activity, id) {
+  return activity.attachments && activity.attachments.length > 0 && activity.attachments[0].content && activity.attachments[0].content.id == id;
+}
+function RemoveAttributes(className, attribute) {
+  const element = document.querySelector("#webchat .ac-choiceSetInput-multiSelect")
+  if (element) {
+    element.removeAttribute(attribute);
+  }
+}
+async function subscribeToActivityStream(globalDirectLine) {
+  globalDirectLine.activity$.subscribe(async activity => {
+
+    const seeResultsBtn = Array.from(document.querySelectorAll('button.ac-pushButton[title="See my results"]')).pop();
+    const talktoPersonakShopperBtn = document.querySelector('button.ac-pushButton[title="Talk to a personal shopper"]');
+
+    //user navigated off the bot,so clear the chat history and close the chat window
+    if (seeResultsBtn) {
+      seeResultsBtn.addEventListener('click', async function () {
+        await clearAndCloseChat();
+      });
+    }
+
+    //user navigated off the bot,so clear the chat history and close the chat window
+    if (talktoPersonakShopperBtn) {
+      talktoPersonakShopperBtn.addEventListener('click', async function () {
+        await clearAndCloseChat();
+      });
+    }
+
+    switch (activity.type) {
+      case 'message':
+        if (activity.value && activity.value.actionSubmitId && activity.value.actionSubmitId.toLowerCase().includes("next")) {
+            disableContainer("ac-container ac-adaptiveCard");
+            disableButtonsByClass("ac-pushButton");
+        }
+        if (hasAttachmentId(activity, "use-ACContainer")) {
+          setTimeout(() => RemoveAttributes("ac-choiceSetInput-multiSelect", "aria-required"), 200)
+          //RemoveAttributes("ac-choiceSetInput-multiSelect", "aria-required")
+        }
+        break;
+      case 'event':
+
+        if (activity.name == "refresh" && activity.value) {
+          setTimeout(async function () {
+            await clearAndCloseChat();
+          }, 10000);
+        }
+        break;
+      case 'endOfConversation':
+        await clearAndCloseChat();
+        break;
+      default:
+        console.log("unhandled event")
+
+    }
+  });
+}
+
+function disableContainer(containerId) {
+    var container1 = document.getElementsByClassName(containerId);
+    const numContainer = container1.length;
+    var container = container1[numContainer-1];
+    if (!container) {
+        return;
+    }
+
+    var children = container.querySelectorAll('*');
+    children.forEach(function(child) {
+        child.setAttribute('disabled', 'true');
+        // You may want to style the children differently or leave them unchanged
+        // Here, I'm just changing the color to grey and background color to lightgrey
+        child.style.color = '';
+        child.style.backgroundColor = '';
+    });
+}
+
+function disableButtonsByClass(className) {
+  var buttons = document.querySelectorAll('.' + className);
+  buttons.forEach(function (button) {
+    button.setAttribute('disabled', 'true');
+    button.style.color = 'grey'; // Set color to grey
+    button.style.backgroundColor = 'lightgrey';
+  });
+}
+
+function RenderWebChat(directLine, locale, style) {
+  if (document.getElementById("webchat")) {
+
+    document.getElementById("webchat").remove();
+    const webchatDiv = document.createElement('div');
+    webchatDiv.id = 'webchat';
+    webchatDiv.setAttribute('role', 'main');
+
+    $(".chatBox .chat-container").append('<div id="webchat" role="main"></div>');
+
+    webchatDiv.setAttribute("style", "border: solid grey 2px;")
+    window.WebChat.renderWebChat({
+    adaptiveCardHostConfig,
+      directLine: directLine,
+      userID: 'sdf',
+      username: 'Web Chat User',
+      locale: 'en-US',
+      styleOptions
+    },
+      document.getElementById('webchat')
+    );
+  }
+  document.querySelector('.chat-header').classList.remove('d-none');
+  document.querySelector('.chat-footer').classList.remove('d-none');
+  subscribeToActivityStream(directLine);
+  document.querySelector('.webchat__send-box__main .webchat__send-box-text-box__input').remove();
+  document.querySelector('.webchat__send-box__main button.webchat__icon-button').remove();
+}
+function loadChatBot() {
+  (async function () {
+    const styleOptions = {
+      botAvatarImage: 'https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorplocal/surf-avatar-blue-dark-45x45'
+
+    };
+    const directLine = await CreateDirectline();
+    const locale = document.documentElement.lang || 'en';
+    const subscription = directLine.connectionStatus$.subscribe({
+      next(value) {
+        if (value === 2) {
+          directLine
+            .postActivity({
+              localTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+              locale,
+              name: 'startConversation',
+              type: 'event'
+            })
+            .subscribe();
+          subscription.unsubscribe();
+        }
+      }
+    });
+    RenderWebChat(directLine, locale, styleOptions)
+  })();
+}
+document.addEventListener("DOMContentLoaded", function (event) {
+  var modalTrigger = document.querySelector('.modal-trigger');
+  var chatBox = document.querySelector('.chatBox');
+  var clickStartPlus = document.querySelector('.click-start');
+  var chatBotStart = document.querySelector('.chatBotStart');
+  document.querySelector('.chatbot-close').addEventListener("click", function (event) {
+    event.preventDefault();
+    const clickStartBtn = document.querySelector('.click-start');
+    const closeButton = document.querySelector('.chatbot-close');
+    chatBox.classList.remove('active');
+    // Remove the class to disable the slow animation effect
+    chatBox.classList.add('animate-close');
+    chatBox.classList.remove('animate-open');
+    clickStartBtn.classList.remove('d-none');
+    setTimeout(function () {
+      if (chatBox.classList.contains('animate-close')) {
+        chatBox.classList.add('d-none');
+      }
+    }, 2000);
+  });
+  const closeButton = document.querySelector(".chatbot-close");
+  closeButton.addEventListener("click", function () {
+    chatBotStart.focus();
+  });
+
+  function handleChatBotLoading(){
+        /*event.stopPropagation(); // Prevent parent click event from firing
+        event.preventDefault();*/
+        setTimeout(function () {
+          if (chatBox.classList.contains('animate-open')) {
+            chatBox.classList.remove('d-none');
+          }
+        }, 100);
+        const clickStartBtn = document.querySelector('.click-start');
+        const closeButton = document.querySelector('.chatbot-close');
+        var chatBot = document.querySelectorAll('#webchat');
+        if (chatBox.classList.contains('active')) {
+          chatBox.classList.remove('active');
+        } else {
+          if (chatBot.length == 0) {
+            $(".chatBox .chat-container").append('<div id="webchat" role="main"></div>');
+            loadChatBot();
+          }
+          chatBox.classList.add('active');
+          chatBox.classList.add('animate-open');
+          chatBox.classList.remove('animate-close');
+          clickStartBtn.classList.add('d-none');
+
+        }
+        setTimeout(function () {
+          closeButton.focus();
+        }, 1000);
+    }
+
+  chatBotStart.addEventListener("click", handleChatBotLoading);
+
+  /*On Space-bar click loading chat bot*/
+  chatBotStart.addEventListener("keydown", function(event) {
+      if (event.code === "Space" || event.code === "Spacebar" || event.keyCode === 32) {
+          event.preventDefault()
+          handleChatBotLoading();
+      }
+  });
+  const uhf = document.querySelector('.uhf');
+  const chatBot = document.querySelector('.chatBox');
+  const chat = document.querySelector('.chatBox .chat-container');
+  const navHeight = uhf.offsetHeight + 2;
+  chatBot.style.top = `${navHeight}px`;
+  chatBot.style.height = `calc(100%)`;
+
+  function updateComponentStyles() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const newTop = Math.max(navHeight - scrollY, 0);
+    chatBot.style.top = `${newTop}px`;
+    chatBot.style.height = `calc(100%)`;
+    const height = newTop +navHeight + 5;
+    chat.style.height = `calc(100% - ${height}px)`;
+    chatButtonPosition();
+  }
+  // set chatbot button position above back to top
+  updateComponentStyles();
+  chatButtonPosition();
+  document.addEventListener('resize', (e) => {
+    updateComponentStyles()
+  });
+  document.addEventListener('scroll', (e) => {
+    updateComponentStyles()
+  });
+
+  function chatButtonPosition() {
+    var backToTop = document.querySelector(".fixed-back-to-top");
+    if (backToTop) {
+      if (backToTop.classList.contains("stuck")) {
+        clickStartPlus.style.bottom = "60px";
+      } else {
+        clickStartPlus.style.bottom = "0px";
+      }
+    } else {
+      clickStartPlus.style.bottom = "0px";
+    }
+  }
+  document.addEventListener('keydown', function (event) {
+    const chatbotModal = document.querySelector('.chatBox');
+    const focusableElements = chatbotModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusableElement = focusableElements[0];
+    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+    if (event.key === 'Tab') {
+      if (event.shiftKey) {
+        if (document.activeElement === firstFocusableElement) {
+          event.preventDefault();
+          lastFocusableElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusableElement) {
+          event.preventDefault();
+          firstFocusableElement.focus();
+        }
+      }
+
+    }
+    if (event.key === "Escape") {
+      const closeButton = document.querySelector('.chatbot-close');
+      // Trigger click event on the close button
+      if(event.target.classList.contains("chatbot-close")){
+         closeButton.click();
+      }
+    }
+  });
+});
+
+async function RefreshSession() {
+  await RefreshChat();
+}
+
+async function RefreshChat() {
+  $(".chatBox .chat-container").find('#webchat').remove();
+  $(".chatBox .chat-container").append('<div id="webchat" role="main"></div>');
+  loadChatBot();
+}
+
+function isElementVisible(element) {
+  var rect = element.getBoundingClientRect();
+  return rect.top >= 0 && rect.top <= window.innerHeight;
+}
+window.addEventListener('scroll', function () {
+  var backToTop = document.querySelector(".fixed-back-to-top");
+  var clickStart = document.querySelector(".chat-bot .click-start");
+  if (backToTop && clickStart) {
+    var backToTopPos = backToTop.getBoundingClientRect();
+    var backToTopHeight = backToTop.offsetHeight;
+    var windowHeight = window.innerHeight;
+    if (backToTopPos.top <= windowHeight) {
+      clickStart.style.top = "auto";
+      clickStart.style.bottom = (windowHeight - backToTopPos.top - backToTopHeight + 60) + "px"; /* Add a margin or padding */
+      clickStart.classList.add("back-to-top-visible");
+      clickStart.classList.remove("hidden");
+    } else {
+      clickStart.style.top = "auto";
+      clickStart.style.bottom = "1px"; /* Adjust as needed */
+      clickStart.classList.remove("back-to-top-visible");
+      clickStart.classList.add("hidden");
+    }
+  }
+});

@@ -1,0 +1,47 @@
+@keyframes animate-backInUp{0{transform:translateY(50px)}
+100%{transform:translateY(0)}
+}
+@keyframes animate-backInRight{0{margin-left:10%}
+100%{margin-left:-1%}
+}
+@keyframes animate-backInLeft{0{margin-right:10%}
+100%{margin-right:-1%}
+}
+@keyframes animate-backInUpandfadeIn{0{opacity:0;transform:translateY(50px)}
+100%{opacity:1;transform:translateY(0)}
+}
+@keyframes animate-backInRightandfadeIn{0{opacity:0;transform:translatex(-50px)}
+100%{opacity:1;transform:translatex(0)}
+}
+@keyframes animate-backInLeftandfadeIn{0{opacity:0;transform:translateX(50px)}
+100%{opacity:1;transform:translateX(0)}
+}
+.bgwhitelineargradient{background-image:conic-gradient(from -35.85deg at 32.86% 46.12%,rgba(255,255,255,0) 0,#e1e1e1 360deg)}
+.bggreenlineargradient{background-image:linear-gradient(338.51deg,#91b398 25.25%,#b5d0bb 88.76%)}
+.bgbluelineargradient{background-image:linear-gradient(0,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),conic-gradient(from 129.07deg at 53.91% 63.05%,#d4d6ff 0,#5f65ec 154.09deg,#030646 360deg)}
+.bgpurplelineargradient{background-image:conic-gradient(from -40.42deg at 29.75% 34.69%,rgba(255,255,255,0) 0,#fff 360deg)}
+.bgorangelineargradient{background-image:linear-gradient(310.75deg,#e5b5a1 -35.02%,#fed6c2 55.17%)}
+.bgredlineargradient{background-image:linear-gradient(172.3deg,#ffc8bc 9.58%,#e39b8c 70.59%)}
+.reduced-animation-toggle{width:100%;display:flex;flex-flow:row-reverse;padding:10px;background-color:#e6e6e6;height:40px;padding-right:150px}
+@media screen and (max-width:1920px){.reduced-animation-toggle{padding-right:70px}
+}
+@media screen and (max-width:1400px){.reduced-animation-toggle{padding-right:56px}
+}
+@media screen and (max-width:1083px){.reduced-animation-toggle{padding-right:12px}
+}
+.reduced-animation-toggle div.c-toggle>label+button{clear:none}
+.reduced-animation-toggle div.c-toggle{display:flex;align-items:center}
+.reduced-animation-toggle div.c-toggle button{position:relative;outline:2px solid transparent;border:0;position:relative;width:44px;height:20px;background:transparent;border:1px solid #000;border-radius:20px;margin-top:0;outline:0}
+html[dir="rtl"] .reduced-animation-toggle div.c-toggle button{margin-left:5px}
+.reduced-animation-toggle div.c-toggle button:focus{outline:2px solid #000;outline-offset:1px}
+.reduced-animation-toggle div.c-toggle button:focus::before{outline-color:#000}
+@media screen and (-ms-high-contrast:active){.reduced-animation-toggle div.c-toggle button{color:HighlightText !important;background-color:Highlight !important}
+}
+.reduced-animation-toggle div.c-toggle button[aria-checked='true']{background:#0067b8;border-color:#0067b8}
+.reduced-animation-toggle div.c-toggle button[aria-checked='false']{background:transparent;border-color:#000}
+.reduced-animation-toggle div.c-toggle button:after{position:absolute;left:4px;top:4px;transition:all .1s ease;background:#000;content:"";border-radius:10px;width:10px;height:10px}
+.reduced-animation-toggle div.c-toggle button[aria-checked='true']:after{left:28px;background:#fff}
+.reduced-animation-toggle div.c-toggle span{font-weight:400;font-size:15px;line-height:20px;color:#000}
+.reduced-animation-toggle div.c-toggle .c-label{margin-top:0;padding-bottom:0;font-weight:600;font-size:13px;line-height:16px;text-align:center;pointer-events:none;color:#000}
+.reduced-animation-toggle div.c-toggle .toggle-seperator{width:15px;height:0;border:1px solid #d5d5d5;-ms-transform:rotate(90deg);-webkit-transform:rotate(90deg);transform:rotate(90deg);margin-right:15px;margin-left:15px}
+.reduced-animation-toggle #c-state-label-1{padding-left:10px}

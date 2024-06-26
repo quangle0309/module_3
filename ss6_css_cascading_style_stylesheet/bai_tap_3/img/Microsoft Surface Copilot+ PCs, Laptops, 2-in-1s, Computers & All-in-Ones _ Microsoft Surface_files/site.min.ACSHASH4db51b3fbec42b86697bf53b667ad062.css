@@ -1,0 +1,7 @@
+.cascade-block-heading-component cascade-block-heading[slot="textBlurb"] div[slot="paragraph"]{font-size:21px;line-height:26px;font-weight:600}
+.cascade-block-heading-component>div{padding:30px 0}
+@media(min-width:1084px){.cascade-block-heading-component cascade-block-heading[slot="textBlurb"] div[slot="paragraph"]{font-size:29px;line-height:34px}
+}
+@media(min-width:1400px){.cascade-block-heading-component cascade-block-heading[slot="textBlurb"] div[slot="paragraph"]{font-size:37px;line-height:44px}
+}
+.cascade-block-heading-component:has(cascade-block-heading.theme-night){background:var(--Neutral-Background-Static-Minimal,#0a0520)}

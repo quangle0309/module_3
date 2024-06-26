@@ -1,0 +1,4 @@
+.experimentation{-webkit-box-ordinal-group:-1 !important;-ms-flex-order:-2 !important;order:-2 !important}
+.wayFindingModel-mlsd-exp.modal.show .modal-dialog{background:rgb(255,255,255,0.9);max-width:100% !important;justify-content:center}
+.wayFindingModel-mlsd-exp.modal.show .modal-dialog .modal-content{max-width:800px;border:1px solid #0067b8}
+.wayFindingModel-mlsd-exp .modal-images img{max-width:50%}

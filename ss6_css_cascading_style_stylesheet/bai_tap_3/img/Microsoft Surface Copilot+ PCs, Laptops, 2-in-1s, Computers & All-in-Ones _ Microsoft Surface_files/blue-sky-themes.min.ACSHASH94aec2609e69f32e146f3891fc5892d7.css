@@ -1,0 +1,15 @@
+.link-group-color .btn-primary,.link-group-color .theme-light .btn-primary-alt,.link-group-color .theme-dark .btn-primary-alt,.link-group-color .btn-brand,.link-group-color .theme-dark .btn-brand{background-color:transparent}
+moray-anchor{--ds-button-border-radius:6px}
+moray-link-group.link-group{margin-block:0}
+cascade-block-heading{--ds-block-heading-eyebrow-text-transform:none}
+.heading-gradient{-webkit-background-clip:text !important;-webkit-text-fill-color:transparent;background-clip:text;padding-bottom:.1em}
+.theme-night{--ds-block-heading-title-color:#fff;--ds-block-heading-paragraph-color:#fff}
+.theme-night sup a span{color:#fff}
+.theme-night sub a span{color:#fff}
+.theme-night a.ms-rte-link{color:#fff !important}
+.theme-night,.theme-dark{--ds-pagination-button-arrow-color:#f2f2f2;--ds-pagination-active-dot-color:#3dcbff;--ds-pagination-nav-button-border-color:#3dcbff;--ds-pagination-nav-button-background-color:#33303d;--ds-pagination-control-button-color:#f2f2f2;--ds-pagination-button-focus-dot-color:#fff}
+.page-nav-button-border-gradient{--ds-pagination-nav-button-border-color:transparent;--ds-pagination-nav-button-background-origin:border-box;--ds-pagination-nav-button-background-clip:padding-box,border-box}
+@media(forced-colors:active){.carousel-high-contrast{--ds-pagination-nav-button-border-color:#fff;--ds-pagination-button-focus-dot-color:#fff;--ds-pagination-nav-button-background-origin:unset;--ds-pagination-nav-button-background-clip:unset;--ds-pagination-nav-button-background-image:none !important;--ds-pagination-nav-button-background-color:#000}
+@media(prefers-color-scheme:light){.carousel-high-contrast{--ds-pagination-button-focus-dot-color:#000}
+}
+}

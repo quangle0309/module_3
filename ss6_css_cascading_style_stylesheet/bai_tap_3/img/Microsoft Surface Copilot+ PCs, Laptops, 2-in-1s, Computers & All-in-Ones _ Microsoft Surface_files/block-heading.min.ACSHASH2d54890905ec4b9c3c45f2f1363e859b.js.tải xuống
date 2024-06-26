@@ -1,0 +1,261 @@
+/*! For license information please see block-heading-bundle.js.LICENSE.txt */
+(()=>{var t={524:t=>{var e;self,e=()=>(()=>{"use strict";var t={5270:(t,e,i)=>{i.d(e,{M:()=>o});const o=t=>(e,i)=>{customElements.get(t)?console.warn(`${t} is already defined.`):void 0!==i?i.addInitializer((()=>{customElements.define(t,e)})):customElements.define(t,e)}},8701:(t,e,i)=>{i.d(e,{$m:()=>h,ec:()=>c,i1:()=>d,iv:()=>l});const o=globalThis,r=o.ShadowRoot&&(void 0===o.ShadyCSS||o.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s=Symbol(),n=new WeakMap;class a{constructor(t,e,i){if(this._$cssResult$=!0,i!==s)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o;const e=this.t;if(r&&void 0===t){const i=void 0!==e&&1===e.length;i&&(t=n.get(e)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),i&&n.set(e,t))}return t}toString(){return this.cssText}}const h=t=>new a("string"==typeof t?t:t+"",void 0,s),l=(t,...e)=>{const i=1===t.length?t[0]:e.reduce(((e,i,o)=>e+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(i)+t[o+1]),t[0]);return new a(i,t,s)},c=(t,e)=>{if(r)t.adoptedStyleSheets=e.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet));else for(const i of e){const e=document.createElement("style"),r=o.litNonce;void 0!==r&&e.setAttribute("nonce",r),e.textContent=i.cssText,t.appendChild(e)}},d=r?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const i of t.cssRules)e+=i.cssText;return h(e)})(t):t},760:(t,e,i)=>{i.d(e,{C:()=>n});var o=i(8732);const r={attribute:!0,type:String,converter:o.Ts,reflect:!1,hasChanged:o.Qu},s=(t=r,e,i)=>{const{kind:o,metadata:s}=i;let n=globalThis.litPropertyMetadata.get(s);if(void 0===n&&globalThis.litPropertyMetadata.set(s,n=new Map),n.set(i.name,t),"accessor"===o){const{name:o}=i;return{set(i){const r=e.get.call(this);e.set.call(this,i),this.requestUpdate(o,r,t)},init(e){return void 0!==e&&this.P(o,void 0,t),e}}}if("setter"===o){const{name:o}=i;return function(i){const r=this[o];e.call(this,i),this.requestUpdate(o,r,t)}}throw Error("Unsupported decorator location: "+o)};function n(t){return(e,i)=>"object"==typeof i?s(t,e,i):((t,e,i)=>{const o=e.hasOwnProperty(i);return e.constructor.createProperty(i,o?{...t,wrapped:!0}:t),o?Object.getOwnPropertyDescriptor(e,i):void 0})(t,e,i)}},9158:(t,e,i)=>{i(760)},8732:(t,e,i)=>{i.d(e,{$m:()=>o.$m,Qu:()=>b,Ts:()=>$,fl:()=>m,iv:()=>o.iv});var o=i(8701);const{is:r,defineProperty:s,getOwnPropertyDescriptor:n,getOwnPropertyNames:a,getOwnPropertySymbols:h,getPrototypeOf:l}=Object,c=globalThis,d=c.trustedTypes,p=d?d.emptyScript:"",g=c.reactiveElementPolyfillSupport,u=(t,e)=>t,$={toAttribute(t,e){switch(e){case Boolean:t=t?p:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t)}return t},fromAttribute(t,e){let i=t;switch(e){case Boolean:i=null!==t;break;case Number:i=null===t?null:Number(t);break;case Object:case Array:try{i=JSON.parse(t)}catch(t){i=null}}return i}},b=(t,e)=>!r(t,e),f={attribute:!0,type:String,converter:$,reflect:!1,hasChanged:b};Symbol.metadata??=Symbol("metadata"),c.litPropertyMetadata??=new WeakMap;class m extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??=[]).push(t)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,e=f){if(e.state&&(e.attribute=!1),this._$Ei(),this.elementProperties.set(t,e),!e.noAccessor){const i=Symbol(),o=this.getPropertyDescriptor(t,i,e);void 0!==o&&s(this.prototype,t,o)}}static getPropertyDescriptor(t,e,i){const{get:o,set:r}=n(this.prototype,t)??{get(){return this[e]},set(t){this[e]=t}};return{get(){return o?.call(this)},set(e){const s=o?.call(this);r.call(this,e),this.requestUpdate(t,s,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)??f}static _$Ei(){if(this.hasOwnProperty(u("elementProperties")))return;const t=l(this);t.finalize(),void 0!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties)}static finalize(){if(this.hasOwnProperty(u("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(u("properties"))){const t=this.properties,e=[...a(t),...h(t)];for(const i of e)this.createProperty(i,t[i])}const t=this[Symbol.metadata];if(null!==t){const e=litPropertyMetadata.get(t);if(void 0!==e)for(const[t,i]of e)this.elementProperties.set(t,i)}this._$Eh=new Map;for(const[t,e]of this.elementProperties){const i=this._$Eu(t,e);void 0!==i&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(t){const e=[];if(Array.isArray(t)){const i=new Set(t.flat(1/0).reverse());for(const t of i)e.unshift((0,o.i1)(t))}else void 0!==t&&e.push((0,o.i1)(t));return e}static _$Eu(t,e){const i=e.attribute;return!1===i?void 0:"string"==typeof i?i:"string"==typeof t?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){this._$ES=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$E_(),this.requestUpdate(),this.constructor.l?.forEach((t=>t(this)))}addController(t){(this._$EO??=new Set).add(t),void 0!==this.renderRoot&&this.isConnected&&t.hostConnected?.()}removeController(t){this._$EO?.delete(t)}_$E_(){const t=new Map,e=this.constructor.elementProperties;for(const i of e.keys())this.hasOwnProperty(i)&&(t.set(i,this[i]),delete this[i]);t.size>0&&(this._$Ep=t)}createRenderRoot(){const t=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return(0,o.ec)(t,this.constructor.elementStyles),t}connectedCallback(){this.renderRoot??=this.createRenderRoot(),this.enableUpdating(!0),this._$EO?.forEach((t=>t.hostConnected?.()))}enableUpdating(t){}disconnectedCallback(){this._$EO?.forEach((t=>t.hostDisconnected?.()))}attributeChangedCallback(t,e,i){this._$AK(t,i)}_$EC(t,e){const i=this.constructor.elementProperties.get(t),o=this.constructor._$Eu(t,i);if(void 0!==o&&!0===i.reflect){const r=(void 0!==i.converter?.toAttribute?i.converter:$).toAttribute(e,i.type);this._$Em=t,null==r?this.removeAttribute(o):this.setAttribute(o,r),this._$Em=null}}_$AK(t,e){const i=this.constructor,o=i._$Eh.get(t);if(void 0!==o&&this._$Em!==o){const t=i.getPropertyOptions(o),r="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==t.converter?.fromAttribute?t.converter:$;this._$Em=o,this[o]=r.fromAttribute(e,t.type),this._$Em=null}}requestUpdate(t,e,i){if(void 0!==t){if(i??=this.constructor.getPropertyOptions(t),!(i.hasChanged??b)(this[t],e))return;this.P(t,e,i)}!1===this.isUpdatePending&&(this._$ES=this._$ET())}P(t,e,i){this._$AL.has(t)||this._$AL.set(t,e),!0===i.reflect&&this._$Em!==t&&(this._$Ej??=new Set).add(t)}async _$ET(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??=this.createRenderRoot(),this._$Ep){for(const[t,e]of this._$Ep)this[t]=e;this._$Ep=void 0}const t=this.constructor.elementProperties;if(t.size>0)for(const[e,i]of t)!0!==i.wrapped||this._$AL.has(e)||void 0===this[e]||this.P(e,this[e],i)}let t=!1;const e=this._$AL;try{t=this.shouldUpdate(e),t?(this.willUpdate(e),this._$EO?.forEach((t=>t.hostUpdate?.())),this.update(e)):this._$EU()}catch(e){throw t=!1,this._$EU(),e}t&&this._$AE(e)}willUpdate(t){}_$AE(t){this._$EO?.forEach((t=>t.hostUpdated?.())),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$EU(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return!0}update(t){this._$Ej&&=this._$Ej.forEach((t=>this._$EC(t,this[t]))),this._$EU()}updated(t){}firstUpdated(t){}}m.elementStyles=[],m.shadowRootOptions={mode:"open"},m[u("elementProperties")]=new Map,m[u("finalized")]=new Map,g?.({ReactiveElement:m}),(c.reactiveElementVersions??=[]).push("2.0.4")},8922:(t,e,i)=>{i.d(e,{$m:()=>o.$m,dy:()=>r.dy,iv:()=>o.iv,oi:()=>s});var o=i(8732),r=i(3692);class s extends o.fl{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){const t=super.createRenderRoot();return this.renderOptions.renderBefore??=t.firstChild,t}update(t){const e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=(0,r.sY)(e,this.renderRoot,this.renderOptions)}connectedCallback(){super.connectedCallback(),this._$Do?.setConnected(!0)}disconnectedCallback(){super.disconnectedCallback(),this._$Do?.setConnected(!1)}render(){return r.Jb}}s._$litElement$=!0,s.finalized=!0,globalThis.litElementHydrateSupport?.({LitElement:s});const n=globalThis.litElementPolyfillSupport;n?.({LitElement:s}),(globalThis.litElementVersions??=[]).push("4.0.4")},3692:(t,e,i)=>{i.d(e,{Jb:()=>w,dy:()=>A,sY:()=>D});const o=globalThis,r=o.trustedTypes,s=r?r.createPolicy("lit-html",{createHTML:t=>t}):void 0,n="$lit$",a=`lit$${(Math.random()+"").slice(9)}$`,h="?"+a,l=`<${h}>`,c=document,d=()=>c.createComment(""),p=t=>null===t||"object"!=typeof t&&"function"!=typeof t,g=Array.isArray,u="[ \t\n\f\r]",$=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,b=/-->/g,f=/>/g,m=RegExp(`>|${u}(?:([^\\s"'>=/]+)(${u}*=${u}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),v=/'/g,_=/"/g,y=/^(?:script|style|textarea|title)$/i,k=t=>(e,...i)=>({_$litType$:t,strings:e,values:i}),A=k(1),w=(k(2),Symbol.for("lit-noChange")),S=Symbol.for("lit-nothing"),E=new WeakMap,x=c.createTreeWalker(c,129);function P(t,e){if(!Array.isArray(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==s?s.createHTML(e):e}const C=(t,e)=>{const i=t.length-1,o=[];let r,s=2===e?"<svg>":"",h=$;for(let e=0;e<i;e++){const i=t[e];let c,d,p=-1,g=0;for(;g<i.length&&(h.lastIndex=g,d=h.exec(i),null!==d);)g=h.lastIndex,h===$?"!--"===d[1]?h=b:void 0!==d[1]?h=f:void 0!==d[2]?(y.test(d[2])&&(r=RegExp("</"+d[2],"g")),h=m):void 0!==d[3]&&(h=m):h===m?">"===d[0]?(h=r??$,p=-1):void 0===d[1]?p=-2:(p=h.lastIndex-d[2].length,c=d[1],h=void 0===d[3]?m:'"'===d[3]?_:v):h===_||h===v?h=m:h===b||h===f?h=$:(h=m,r=void 0);const u=h===m&&t[e+1].startsWith("/>")?" ":"";s+=h===$?i+l:p>=0?(o.push(c),i.slice(0,p)+n+i.slice(p)+a+u):i+a+(-2===p?e:u)}return[P(t,s+(t[i]||"<?>")+(2===e?"</svg>":"")),o]};class U{constructor({strings:t,_$litType$:e},i){let o;this.parts=[];let s=0,l=0;const c=t.length-1,p=this.parts,[g,u]=C(t,e);if(this.el=U.createElement(g,i),x.currentNode=this.el.content,2===e){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes)}for(;null!==(o=x.nextNode())&&p.length<c;){if(1===o.nodeType){if(o.hasAttributes())for(const t of o.getAttributeNames())if(t.endsWith(n)){const e=u[l++],i=o.getAttribute(t).split(a),r=/([.?@])?(.*)/.exec(e);p.push({type:1,index:s,name:r[2],strings:i,ctor:"."===r[1]?N:"?"===r[1]?R:"@"===r[1]?z:H}),o.removeAttribute(t)}else t.startsWith(a)&&(p.push({type:6,index:s}),o.removeAttribute(t));if(y.test(o.tagName)){const t=o.textContent.split(a),e=t.length-1;if(e>0){o.textContent=r?r.emptyScript:"";for(let i=0;i<e;i++)o.append(t[i],d()),x.nextNode(),p.push({type:2,index:++s});o.append(t[e],d())}}}else if(8===o.nodeType)if(o.data===h)p.push({type:2,index:s});else{let t=-1;for(;-1!==(t=o.data.indexOf(a,t+1));)p.push({type:7,index:s}),t+=a.length-1}s++}}static createElement(t,e){const i=c.createElement("template");return i.innerHTML=t,i}}function O(t,e,i=t,o){if(e===w)return e;let r=void 0!==o?i._$Co?.[o]:i._$Cl;const s=p(e)?void 0:e._$litDirective$;return r?.constructor!==s&&(r?._$AO?.(!1),void 0===s?r=void 0:(r=new s(t),r._$AT(t,i,o)),void 0!==o?(i._$Co??=[])[o]=r:i._$Cl=r),void 0!==r&&(e=O(t,r._$AS(t,e.values),r,o)),e}class T{constructor(t,e){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:e},parts:i}=this._$AD,o=(t?.creationScope??c).importNode(e,!0);x.currentNode=o;let r=x.nextNode(),s=0,n=0,a=i[0];for(;void 0!==a;){if(s===a.index){let e;2===a.type?e=new M(r,r.nextSibling,this,t):1===a.type?e=new a.ctor(r,a.name,a.strings,this,t):6===a.type&&(e=new j(r,this,t)),this._$AV.push(e),a=i[++n]}s!==a?.index&&(r=x.nextNode(),s++)}return x.currentNode=c,o}p(t){let e=0;for(const i of this._$AV)void 0!==i&&(void 0!==i.strings?(i._$AI(t,i,e),e+=i.strings.length-2):i._$AI(t[e])),e++}}class M{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,e,i,o){this.type=2,this._$AH=S,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=i,this.options=o,this._$Cv=o?.isConnected??!0}get parentNode(){let t=this._$AA.parentNode;const e=this._$AM;return void 0!==e&&11===t?.nodeType&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=O(this,t,e),p(t)?t===S||null==t||""===t?(this._$AH!==S&&this._$AR(),this._$AH=S):t!==this._$AH&&t!==w&&this._(t):void 0!==t._$litType$?this.$(t):void 0!==t.nodeType?this.T(t):(t=>g(t)||"function"==typeof t?.[Symbol.iterator])(t)?this.k(t):this._(t)}S(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.S(t))}_(t){this._$AH!==S&&p(this._$AH)?this._$AA.nextSibling.data=t:this.T(c.createTextNode(t)),this._$AH=t}$(t){const{values:e,_$litType$:i}=t,o="number"==typeof i?this._$AC(t):(void 0===i.el&&(i.el=U.createElement(P(i.h,i.h[0]),this.options)),i);if(this._$AH?._$AD===o)this._$AH.p(e);else{const t=new T(o,this),i=t.u(this.options);t.p(e),this.T(i),this._$AH=t}}_$AC(t){let e=E.get(t.strings);return void 0===e&&E.set(t.strings,e=new U(t)),e}k(t){g(this._$AH)||(this._$AH=[],this._$AR());const e=this._$AH;let i,o=0;for(const r of t)o===e.length?e.push(i=new M(this.S(d()),this.S(d()),this,this.options)):i=e[o],i._$AI(r),o++;o<e.length&&(this._$AR(i&&i._$AB.nextSibling,o),e.length=o)}_$AR(t=this._$AA.nextSibling,e){for(this._$AP?.(!1,!0,e);t&&t!==this._$AB;){const e=t.nextSibling;t.remove(),t=e}}setConnected(t){void 0===this._$AM&&(this._$Cv=t,this._$AP?.(t))}}class H{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,e,i,o,r){this.type=1,this._$AH=S,this._$AN=void 0,this.element=t,this.name=e,this._$AM=o,this.options=r,i.length>2||""!==i[0]||""!==i[1]?(this._$AH=Array(i.length-1).fill(new String),this.strings=i):this._$AH=S}_$AI(t,e=this,i,o){const r=this.strings;let s=!1;if(void 0===r)t=O(this,t,e,0),s=!p(t)||t!==this._$AH&&t!==w,s&&(this._$AH=t);else{const o=t;let n,a;for(t=r[0],n=0;n<r.length-1;n++)a=O(this,o[i+n],e,n),a===w&&(a=this._$AH[n]),s||=!p(a)||a!==this._$AH[n],a===S?t=S:t!==S&&(t+=(a??"")+r[n+1]),this._$AH[n]=a}s&&!o&&this.j(t)}j(t){t===S?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"")}}class N extends H{constructor(){super(...arguments),this.type=3}j(t){this.element[this.name]=t===S?void 0:t}}class R extends H{constructor(){super(...arguments),this.type=4}j(t){this.element.toggleAttribute(this.name,!!t&&t!==S)}}class z extends H{constructor(t,e,i,o,r){super(t,e,i,o,r),this.type=5}_$AI(t,e=this){if((t=O(this,t,e,0)??S)===w)return;const i=this._$AH,o=t===S&&i!==S||t.capture!==i.capture||t.once!==i.once||t.passive!==i.passive,r=t!==S&&(i===S||o);o&&this.element.removeEventListener(this.name,this,i),r&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){"function"==typeof this._$AH?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t)}}class j{constructor(t,e,i){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=i}get _$AU(){return this._$AM._$AU}_$AI(t){O(this,t)}}const L=o.litHtmlPolyfillSupport;L?.(U,M),(o.litHtmlVersions??=[]).push("3.1.2");const D=(t,e,i)=>{const o=i?.renderBefore??e;let r=o._$litPart$;if(void 0===r){const t=i?.renderBefore??null;o._$litPart$=r=new M(e.insertBefore(d(),t),t,void 0,i??{})}return r._$AI(t),r}},9662:(t,e,i)=>{i.d(e,{Cb:()=>o.C});var o=i(760);i(9158)},5862:(t,e,i)=>{i.d(e,{$m:()=>o.$m,dy:()=>o.dy,iv:()=>o.iv,oi:()=>o.oi}),i(8732),i(3692);var o=i(8922)},7582:(t,e,i)=>{function o(t,e,i,o){var r,s=arguments.length,n=s<3?e:null===o?o=Object.getOwnPropertyDescriptor(e,i):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)n=Reflect.decorate(t,e,i,o);else for(var a=t.length-1;a>=0;a--)(r=t[a])&&(n=(s<3?r(n):s>3?r(e,i,n):r(e,i))||n);return s>3&&n&&Object.defineProperty(e,i,n),n}i.d(e,{gn:()=>o}),Object.create,Object.create,"function"==typeof SuppressedError&&SuppressedError}},e={};function i(o){var r=e[o];if(void 0!==r)return r.exports;var s=e[o]={exports:{}};return t[o](s,s.exports,i),s.exports}i.d=(t,e)=>{for(var o in e)i.o(e,o)&&!i.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:e[o]})},i.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),i.r=t=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})};var o={};return(()=>{i.r(o),i.d(o,{BlockHeading:()=>l});var t=i(7582),e=i(5862),r=i(9662);const s="left",n="1rem",a=e.iv`
+  .block-heading {
+    --_link-color: var(--ds-card-link-color, #0067b8);
+    --root-spacing-m: var(--theme-spacing-m, 0.5rem);
+    --root-spacing-xl: var(--theme-spacing-xl, 2rem);
+
+    text-align: var(
+      --ds-block-heading-text-align,
+      ${(0,e.$m)(s)}
+    );
+    background-color: var(--block-heading-background-color);
+
+    .block-heading__button-group > .button-group {
+      justify-content: var(--block-heading-text-align);
+    }
+  }
+
+  ::slotted([slot='eyebrow']) {
+    --block-heading-eyebrow-color: var(
+      --ds-block-heading-eyebrow-color,
+      var(
+        --ds-theme-foreground-base-highlight,
+        ${(0,e.$m)("#005597")}
+      )
+    );
+    --block-heading-eyebrow-font-weight: var(
+      --ds-block-heading-eyebrow-font-weight,
+      ${(0,e.$m)("600")}
+    );
+
+    --block-heading-eyebrow-font-size: var(
+      --ds-block-heading-eyebrow-font-size,
+      ${(0,e.$m)("0.75rem")}
+    );
+    --block-heading-eyebrow-line-height: var(
+      --ds-block-heading-eyebrow-line-height,
+      ${(0,e.$m)("1rem")}
+    );
+    --block-heading-eyebrow-letter-spacing: var(
+      --ds-block-heading-eyebrow-letter-spacing,
+      ${(0,e.$m)("0.08rem")}
+    );
+    --block-heading-eyebrow-margin: var(
+      --ds-block-heading-eyebrow-margin,
+      var(--ds-spacing-5, ${(0,e.$m)("1rem")})
+    );
+    --block-heading-eyebrow-text-transform: var(
+      --ds-block-heading-eyebrow-text-transform,
+      ${(0,e.$m)("uppercase")}
+    );
+
+    text-transform: var(--block-heading-eyebrow-text-transform);
+    color: var(--block-heading-eyebrow-color);
+    font-weight: var(--block-heading-eyebrow-font-weight);
+    font-size: var(--block-heading-eyebrow-font-size);
+    line-height: var(--block-heading-eyebrow-line-height);
+    letter-spacing: var(--block-heading-eyebrow-letter-spacing);
+    margin: 0 0 var(--block-heading-eyebrow-margin);
+  }
+
+  ::slotted([slot='title']) {
+    --block-heading-title-color: var(
+      --ds-block-heading-title-color,
+      var(--ds-theme-foreground-base, ${(0,e.$m)("#0e1726")})
+    );
+    --block-heading-title-background: var(
+      --ds-block-heading-title-background,
+      ${(0,e.$m)("transparent")}
+    );
+
+    color: var(--block-heading-title-color);
+    background: var(--block-heading-title-background);
+  }
+
+  ::slotted([slot='paragraph']) {
+    --block-heading-paragraph-color: var(
+      --ds-block-heading-paragraph-color,
+      var(
+        --ds-theme-foreground-base-subtle,
+        ${(0,e.$m)("#17253d")}
+      )
+    );
+    --block-heading-paragraph-margin: var(
+      --ds-block-heading-paragraph-margin,
+      var(--ds-spacing-5, ${(0,e.$m)(n)})
+    );
+    --block-heading-paragraph-font-weight: var(
+      --ds-block-heading-paragraph-font-weight,
+      var(
+        --ds-body-font-weight,
+        ${(0,e.$m)("400")}
+      )
+    );
+    --block-heading-paragraph-font-size: var(
+      --ds-block-heading-paragraph-font-size,
+      var(--ds-body-font-size, ${(0,e.$m)("1rem")})
+    );
+    --block-heading-paragraph-line-height: var(
+      --ds-block-heading-paragraph-line-height,
+      var(
+        --ds-body-line-height,
+        ${(0,e.$m)("1.5rem")}
+      )
+    );
+    --block-heading-paragraph-letter-spacing: var(
+      --ds-block-heading-paragraph-letter-spacing,
+      var(
+        --ds-body-letter-spacing,
+        ${(0,e.$m)("-0.03em")}
+      )
+    );
+    --block-heading-paragraph-margin: var(
+      --ds-block-heading-paragraph-margin,
+      var(--ds-spacing-5, ${(0,e.$m)(n)})
+    );
+    --block-heading-paragraph-margin-right: var(
+      --ds-block-heading-paragraph-margin-right,
+      ${(0,e.$m)("0")}
+    );
+    --block-heading-paragraph-margin-left: var(
+      --ds-block-heading-paragraph-margin-left,
+      ${(0,e.$m)("0")}
+    );
+    --block-heading-paragraph-width: var(
+      --ds-block-heading-paragraph-width,
+      ${(0,e.$m)("100%")}
+    );
+    color: var(--block-heading-paragraph-color);
+    margin: var(--block-heading-paragraph-margin)
+      var(--block-heading-paragraph-margin-right) 0
+      var(--block-heading-paragraph-margin-left);
+    font-weight: var(--block-heading-paragraph-font-weight);
+    font-size: var(--block-heading-paragraph-font-size);
+    line-height: var(--block-heading-paragraph-line-height);
+    letter-spacing: var(--block-heading-paragraph-letter-spacing);
+    margin-bottom: 0;
+    width: var(--block-heading-paragraph-width);
+  }
+
+  .block-heading__button-group {
+    margin: var(--root-spacing-xl) 0 0;
+  }
+  ::slotted([slot='links']) {
+    margin: var(
+        --ds-block-heading-links-margin,
+        var(--ds-spacing-6, ${(0,e.$m)("1.5rem")})
+      )
+      0 0;
+    justify-content: var(
+      --ds-block-heading-text-align,
+      ${(0,e.$m)(s)}
+    );
+  }
+
+  .block-heading__cta {
+    color: var(--_link-color);
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .block-heading__cta::after {
+    content: '';
+    right: 0.4375rem;
+  }
+  .block-heading__cta::after {
+    font-family: MWF-FLUENT-ICONS;
+    line-height: 1;
+    top: calc(50% + 0.0625em);
+    margin-top: -0.5em;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    font-weight: 600;
+  }
+
+  .block-heading--alignment-centered {
+    --block-heading-text-align: center;
+
+    .block-heading__slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  ::slotted([slot='footnote']) {
+    --block-heading-footnote-color: var(
+      --ds-block-heading-footnote-color,
+      var(
+        --ds-theme-foreground-base-subtle,
+        ${(0,e.$m)("#17253d")}
+      )
+    );
+    --block-heading-footnote-font-weight: var(
+      --ds-block-heading-footnote-font-weight,
+      var(
+        --ds-body-font-weight,
+        ${(0,e.$m)("400")}
+      )
+    );
+    --block-heading-footnote-font-size: var(
+      --ds-block-heading-footnote-font-size,
+      var(
+        --ds-body-xs-font-size,
+        ${(0,e.$m)("0.75rem")}
+      )
+    );
+    --block-heading-footnote-line-height: var(
+      --ds-block-heading-footnote-line-height,
+      var(
+        --ds-body-xs-line-height,
+        ${(0,e.$m)("1rem")}
+      )
+    );
+    --block-heading-footnote-letter-spacing: var(
+      --ds-block-heading-footnote-letter-spacing,
+      var(
+        --ds-body-xs-letter-spacing,
+        ${(0,e.$m)("-0.03em")}
+      )
+    );
+    --block-heading-footnote-margin: var(
+      --ds-block-heading-footnote-margin,
+      var(--ds-spacing-6, ${(0,e.$m)("1.5rem")})
+    );
+
+    color: var(--block-heading-footnote-color);
+    margin: var(--block-heading-footnote-margin) 0 0;
+    font-weight: var(--block-heading-footnote-font-weight);
+    font-size: var(--block-heading-footnote-font-size);
+    line-height: var(--block-heading-footnote-line-height);
+    letter-spacing: var(--block-heading-footnote-letter-spacing);
+    margin-bottom: 0;
+  }
+  :host([center-text]) .block-heading *,
+  :host([center-text]) .block-heading ::slotted(*) {
+    text-align: center;
+  }
+  :host([center-text]) .block-heading ::slotted([slot='links']) {
+    display: flex;
+    justify-content: center;
+  }
+
+  ::slotted([slot='card']) {
+    display: flex;
+    margin: var(
+        --ds-block-heading-slot-margin,
+        var(--ds-spacing-8, ${(0,e.$m)("2rem")})
+      )
+      0 0;
+  }
+`;var h=i(5270);let l=class extends e.oi{constructor(){super(...arguments),this.centerText=!1}render(){return e.dy` <div class="block-heading">
+      <slot name="eyebrow" class="block-heading__eyebrow"></slot>
+      <slot name="title" class="block-heading__title"></slot>
+      <slot name="paragraph" class="block-heading__paragraph"></slot>
+      <slot name="links" class="block-heading__link-group"></slot>
+      <slot name="card" class="block-heading__slot"></slot>
+      <slot name="footnote" class="block-heading__footnote"></slot>
+    </div>`}};l.styles=[a],(0,t.gn)([(0,r.Cb)({attribute:"center-text"})],l.prototype,"centerText",void 0),l=(0,t.gn)([(0,h.M)("cascade-block-heading")],l)})(),o})(),t.exports=e()}},e={};function i(o){var r=e[o];if(void 0!==r)return r.exports;var s=e[o]={exports:{}};return t[o](s,s.exports,i),s.exports}i.n=t=>{var e=t&&t.__esModule?()=>t.default:()=>t;return i.d(e,{a:e}),e},i.d=(t,e)=>{for(var o in e)i.o(e,o)&&!i.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:e[o]})},i.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),(()=>{"use strict";i(524)})()})();

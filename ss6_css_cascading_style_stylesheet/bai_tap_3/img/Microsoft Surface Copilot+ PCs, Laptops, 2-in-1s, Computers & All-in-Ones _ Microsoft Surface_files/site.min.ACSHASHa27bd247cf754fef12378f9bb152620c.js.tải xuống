@@ -1,0 +1,777 @@
+var aniGlobal = aniGlobal || {};
+"use strict";
+
+	(function () {
+		// check if a JS file is already loaded
+		var isFirstLoad = function isFirstLoad(nameSpace) {
+			var isFirst = nameSpace.firstLoad === undefined;
+			nameSpace.firstLoad = false;
+
+			return isFirst;
+		};
+
+		// if global.js is already loaded, don't run below code
+		if (!isFirstLoad(aniGlobal)) return;
+
+		/*! npm.im/object-fit-images 3.2.4 */
+		//CodeQL [SM02383] The global flag will replace all occurrences of quotes with escaped quotes for background image url
+		aniGlobal.objectFitImages = function () { "use strict"; function t(t, e) { return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" + t + "' height='" + e + "'%3E%3C/svg%3E"; } function e(t) { if (t.srcset && !p && window.picturefill) { var e = window.picturefill._; t[e.ns] && t[e.ns].evaled || e.fillImg(t, { reselect: !0 }), t[e.ns].curSrc || (t[e.ns].supported = !1, e.fillImg(t, { reselect: !0 })), t.currentSrc = t[e.ns].curSrc || t.src; } } function i(t) { for (var e, i = getComputedStyle(t).fontFamily, r = {}; null !== (e = u.exec(i));) { r[e[1]] = e[2]; } return r; } function r(e, i, r) { var n = t(i || 1, r || 0); b.call(e, "src") !== n && h.call(e, "src", n); } function n(t, e) { t.naturalWidth ? e(t) : setTimeout(n, 100, t, e); } function c(t) { var c = i(t), o = t[l]; if (c["object-fit"] = c["object-fit"] || "fill", !o.img) { if ("fill" === c["object-fit"]) return; if (!o.skipTest && f && !c["object-position"]) return; } if (!o.img) { o.img = new Image(t.width, t.height), o.img.srcset = b.call(t, "data-ofi-srcset") || t.srcset, o.img.src = b.call(t, "data-ofi-src") || t.src, h.call(t, "data-ofi-src", t.src), t.srcset && h.call(t, "data-ofi-srcset", t.srcset), r(t, t.naturalWidth || t.width, t.naturalHeight || t.height), t.srcset && (t.srcset = ""); try { s(t); } catch (t) { window.console && console.warn("https://bit.ly/ofi-old-browser"); } } e(o.img), t.style.backgroundImage = 'url("' + (o.img.currentSrc || o.img.src || '').toString().replace(/"/g, '\\"') + '")', t.style.backgroundPosition = c["object-position"] || "center", t.style.backgroundRepeat = "no-repeat", t.style.backgroundOrigin = "content-box", /scale-down/.test(c["object-fit"]) ? n(o.img, function () { o.img.naturalWidth > t.width || o.img.naturalHeight > t.height ? t.style.backgroundSize = "contain" : t.style.backgroundSize = "auto"; }) : t.style.backgroundSize = c["object-fit"].replace("none", "auto").replace("fill", "100% 100%"), n(o.img, function (e) { r(t, e.naturalWidth, e.naturalHeight); }); } function s(t) { var e = { get: function get(e) { return t[l].img[e ? e : "src"]; }, set: function set(e, i) { return t[l].img[i ? i : "src"] = e, h.call(t, "data-ofi-" + i, e), c(t), e; } }; Object.defineProperty(t, "src", e), Object.defineProperty(t, "currentSrc", { get: function get() { return e.get("currentSrc"); } }), Object.defineProperty(t, "srcset", { get: function get() { return e.get("srcset"); }, set: function set(t) { return e.set(t, "srcset"); } }); } function o() { function t(t, e) { return t[l] && t[l].img && ("src" === e || "srcset" === e) ? t[l].img : t; } d || (HTMLImageElement.prototype.getAttribute = function (e) { return b.call(t(this, e), e); }, HTMLImageElement.prototype.setAttribute = function (e, i) { return h.call(t(this, e), e, String(i)); }); } function a(t, e) { var i = !y && !t; if (e = e || {}, t = t || "img", d && !e.skipTest || !m) return !1; "img" === t ? t = document.getElementsByTagName("img") : "string" == typeof t ? t = document.querySelectorAll(t) : "length" in t || (t = [t]); for (var r = 0; r < t.length; r++) { t[r][l] = t[r][l] || { skipTest: e.skipTest }, c(t[r]); } i && (document.body.addEventListener("load", function (t) { "IMG" === t.target.tagName && a(t.target, { skipTest: e.skipTest }); }, !0), y = !0, t = "img"), e.watchMQ && window.addEventListener("resize", a.bind(null, t, { skipTest: e.skipTest })); } var l = "bfred-it:object-fit-images", u = /(object-fit|object-position)\s*:\s*([-.\w\s%]+)/g, g = "undefined" == typeof Image ? { style: { "object-position": 1 } } : new Image(), f = "object-fit" in g.style, d = "object-position" in g.style, m = "background-size" in g.style, p = "string" == typeof g.currentSrc, b = g.getAttribute, h = g.setAttribute, y = !1; return a.supportsObjectFit = f, a.supportsObjectPosition = d, o(), a; }();
+
+		aniGlobal.featureCard = function () {
+
+			var cardAffect = function cardAffect(itemList, itemTextClassName, btn) {
+				var delayTimeIcon = 0.1;
+				var delayTimeForNextCard = 0.4;
+				var delayTimeText = delayTimeIcon;
+
+				for (var i = 0; i < itemList.length; i++) {
+					itemList[i].classList.add('feature-card__text--effect');
+					itemList[i].style.animationDelay = "".concat(delayTimeIcon, "s");
+
+					var featureCardTextElements = $(".".concat(itemTextClassName))[i].children;
+
+					for (var a = 0; a < featureCardTextElements.length; a++) {
+                        var contentEle = featureCardTextElements[a].querySelectorAll('.animate-text');
+						var contentEleTotalLines = 0;
+
+						var n = 0;
+						while (n < featureCardTextElements.length) {
+							contentEleTotalLines += contentEle.length;
+							n++;
+						}
+
+						for (var b = 0; b < contentEle.length; b++) {
+							contentEle[b].classList.add('on-focus');
+							contentEle[b].style.animationDelay = "".concat(delayTimeText, "s");
+							var timeSpeed = delayTimeForNextCard / contentEleTotalLines;
+							delayTimeText += timeSpeed;
+						}
+					}
+					delayTimeIcon += delayTimeForNextCard;
+				}
+
+				if (btn !== undefined) {
+					btn.classList.add('tech-specs__btn--effect');
+					btn.style.animationDelay = "".concat(delayTimeText, "s");
+				}
+			};
+
+			return {
+				cardAffect: cardAffect
+			};
+
+		}();
+
+		aniGlobal.panelInView = function () {
+			// check if scrolling to panel
+			var scrollContent = function scrollContent(elm) {
+				var position = document.querySelector(".".concat(elm)).getBoundingClientRect();
+
+				if (
+					position.top > 0 && position.top < window.innerHeight ||
+					position.bottom < window.innerHeight ||
+					position.top < 0 && position.bottom > window.innerHeight) {
+					return true;
+				}
+			};
+
+			// check is element is in view
+			var checkElementInView = function checkElementInView(element) {
+				var bounding = element.getBoundingClientRect();
+				return (
+					bounding.top >= 0 &&
+					bounding.left >= 0 &&
+					bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					bounding.right <= (window.innerWidth || document.documentElement.clientWidth));
+
+			};
+
+			// check if panel partially/fully is visible
+			// for fully visible we set offsetHeight to 0
+			var checkPanelInView = function checkPanelInView(sectionName, offsetHeight) {
+				var position = document.querySelector(".".concat(sectionName)).getBoundingClientRect();
+
+				if (offsetHeight === undefined) {
+					offsetHeight = 1;
+				}
+
+				if (position.top < 0) {
+					return true;
+				}
+
+				return (
+					position.top >= 0 &&
+					position.left >= 0 &&
+					position.bottom - position.height * offsetHeight <= (
+						window.innerHeight || document.documentElement.clientHeight) &&
+					position.right <= (window.innerWidth || document.documentElement.clientWidth));
+
+			};
+
+			return {
+				scrollContent: scrollContent,
+				checkElementInView: checkElementInView,
+				checkPanelInView: checkPanelInView
+			};
+
+		}();
+
+		aniGlobal.utility = function () {
+			/**
+										   * @desc Utility Function to control the number of times a function is executes onEventHandler
+										   * @param {function, int, int}
+										   * @return {function}
+										   */
+			var debounce = function debounce(func, wait, immediate) {
+				var timeout;
+				return function () {
+					var context = this,
+						args = arguments;
+					var later = function later() {
+						timeout = null;
+						if (!immediate) func.apply(context, args);
+					};
+					var callImmediate = immediate && !timeout;
+					clearTimeout(timeout);
+					timeout = setTimeout(later, wait);
+					if (callImmediate) func.apply(context, args);
+				};
+			};
+
+			return {
+				debounce: debounce
+			};
+
+		}();
+
+        aniGlobal.lineAnimation = function () {
+            /**
+             * @desc Checks the HTML tag and check the lang attribute to check if the lang is supporated or not
+             *          NOTE: Currently only ja-jp, zh-hk, zh-cn, zh-tw is not supported but this can be expanded to encompass more 
+             *          languages that are not supported
+             * @param {void} NONE
+             * @return {boolean}
+             * */
+            var langSupported = function langSupported() {
+                var lang = document.querySelector('html').getAttribute('lang');
+                if (lang == 'ja-jp' || lang == 'zh-hk' || lang == 'zh-cn' || lang == 'zh-tw') {
+                    return false;
+                }
+                return true;
+            };
+
+			/**
+			* @desc Takes in Html Element containing text tags and seperates
+			*        each text tag into a seperate tag for each line break visable in the DOM
+			* @param {Array <HTMLElement>} textElements
+			* @return {void}
+			*/
+			var lineBreakText = function lineBreakText(textElements) {
+				var numTextElements = textElements.length;
+
+				for (var i = 0; i < numTextElements; i++) {
+					var innerText = textElements[i].innerHTML.split(' ');
+					var offSetHeight = 0;
+					var wrappingSpan = document.createElement('SPAN');
+
+					/**
+					* wrappingSpan is a container for the seperate text tags per line.
+					* This is inserted after the current text tag to maintain order of tags in HTML.
+					* The Original tag containing the text is then removed as the wrappingSpan will take the place of that
+					*/
+                    wrappingSpan.classList.add('animate-text-group');
+                    wrappingSpan.setAttribute('aria-hidden', true);
+					textElements[i].insertAdjacentElement('afterend', wrappingSpan);
+
+					var newLineTag = document.createElement(textElements[i].tagName);
+
+					// padding removed so new text tags will not have spaces inherited
+					//	from other classes when stacked on top of each other
+					newLineTag.style.margin = '0';
+					newLineTag.style.padding = '0';
+					newLineTag.classList.add('animate-text');
+
+					if (textElements[i].classList.contains('currently-focused')) {
+						newLineTag.classList.add('currently-focused');
+					}
+
+                    wrappingSpan.appendChild(newLineTag);
+
+                    // Check Regional Languages is supported
+                    var langSupported = aniGlobal.lineAnimation.langSupported();
+
+                    //If text contains anchor tag, set up animation for entire text block
+                    if (textElements[i].innerHTML.includes('<a') || !langSupported) {
+						newLineTag.innerHTML = textElements[i].innerHTML;
+
+						if (textElements[i].classList.contains('currently-focused')) {
+							newLineTag.classList.add('currently-focused');
+						}
+						wrappingSpan.appendChild(newLineTag);
+
+					} else {
+						//If No anchor tag is present in text, set up for line break animation
+						for (var j = 0; j < innerText.length; j++) {
+							var txtElement = '';
+							txtElement = innerText[j] + ' ';
+							newLineTag.innerHTML += txtElement;
+
+							//Set offSetHeight based on tag text height
+							if (offSetHeight === 0) {
+								offSetHeight = newLineTag.offsetHeight;
+							}
+
+							if (newLineTag.offsetHeight > offSetHeight) {
+								// slice off last word that caused offsetHeight to increase (overflow)
+								newLineTag.innerHTML = newLineTag.innerHTML.slice(
+									0,
+									newLineTag.innerHTML.length - txtElement.length);
+
+
+								newLineTag = document.createElement(textElements[i].tagName);
+
+								// padding removed so new text tags will not have spaces inherited
+								//	from other classes when stacked on top of each other
+								newLineTag.style.margin = '0';
+								newLineTag.style.padding = '0';
+								newLineTag.classList.add('animate-text');
+								if (textElements[i].classList.contains('currently-focused')) {
+									newLineTag.classList.add('currently-focused');
+								}
+								wrappingSpan.appendChild(newLineTag);
+								newLineTag.innerHTML += txtElement;
+							}
+						}
+					}
+
+
+					var parentElement = textElements[i].parentElement;
+					parentElement.removeChild(textElements[i]);
+				}
+			};
+
+			/**
+			   * @desc Reverts text elements that have been processed through function lineBreakText(). This 
+               *    function is called for setting up another call for lineBreakText() after the window has been resized
+			   * @param {Array<HTMLElement>} animatedTextGroup
+			   * @return {void}
+			   */
+			var revertLineBreakText = function revertLineBreakText(animatedTextGroup) {
+				/**
+				*  Recreates the original text tags in HTML in order be broken down again and
+				* 		processed by lineBreakText() to new text aligned based on the new size
+				* 		of the line breaks from resizing
+				*/
+
+				for (var i = 0; i < animatedTextGroup.length; i++) {
+					var tagType = null;
+					var innerText = '';
+					var numChildren = animatedTextGroup[i].children.length;
+
+					var currentlyFocused = undefined;
+					for (var j = 0; j < numChildren; j++) {
+						if (tagType === null) {
+							tagType = animatedTextGroup[i].children[j].tagName;
+						}
+
+						if (
+							currentlyFocused === undefined && (
+								animatedTextGroup[i].children[j].classList.contains('on-focus') ||
+								animatedTextGroup[i].children[j].classList.contains('currently-focused'))) {
+							currentlyFocused = true;
+						}
+
+						innerText += animatedTextGroup[i].children[j].innerHTML.split();
+					}
+                    var textElement = document.createElement(tagType);
+                    textElement.classList.add('animate-text-group');
+
+					//remove any prev set animation classes
+					textElement.classList.remove('on-focus');
+					textElement.classList.remove('off-focus');
+
+					if (currentlyFocused) {
+						textElement.classList.add('currently-focused');
+					}
+					textElement.innerHTML = innerText;
+
+					animatedTextGroup[i].insertAdjacentElement('afterend', textElement);
+
+					var parentElement = animatedTextGroup[i].parentElement;
+					parentElement.removeChild(animatedTextGroup[i]);
+				}
+			};
+
+			/**
+			   * @desc Animates Selected Collection of Elements containing 'animate-text' class
+			   * @param {Array <HTMLElement>} animatedText
+			   * @return void
+			   */
+			var initTextAnimation = function initTextAnimation(animatedText, delayTime) {
+				for (var i = 0; i < animatedText.length; i++) {
+					if (animatedText[i].classList.contains('animate-text')) {
+						animatedText[i].classList.add('on-focus');
+						animatedText[i].style.animationDelay = "".concat(delayTime, "s");
+						delayTime += 0.3;
+					}
+				}
+			};
+
+            return {
+                langSupported: langSupported,
+                lineBreakText: lineBreakText,
+                revertLineBreakText: revertLineBreakText,
+				initTextAnimation: initTextAnimation
+			};
+
+		}();
+
+		aniGlobal.panelHidden = function () {
+			var isPanelHidden = function isPanelHidden(el) {
+				if (getComputedStyle(el).display === "none") return true;
+				if (el === document.body) return false;
+
+				return isPanelHidden(el.parentElement);
+			};
+
+			return { isPanelHidden: isPanelHidden };
+		}();
+	})();
+﻿var aniGlobal = aniGlobal || {};
+	"use strict";
+
+	(function () {
+		// check if a JS file is already loaded
+		var isFirstLoad = function isFirstLoad(nameSpace) {
+			var isFirst = nameSpace.firstLoad === undefined;
+			nameSpace.firstLoad = false;
+
+			return isFirst;
+		};
+
+		// if global.js is already loaded, don't run below code
+		if (!isFirstLoad(aniGlobal)) return;
+
+		/*! npm.im/object-fit-images 3.2.4 */
+		aniGlobal.objectFitImages = function () { "use strict"; function t(t, e) { return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" + t + "' height='" + e + "'%3E%3C/svg%3E"; } function e(t) { if (t.srcset && !p && window.picturefill) { var e = window.picturefill._; t[e.ns] && t[e.ns].evaled || e.fillImg(t, { reselect: !0 }), t[e.ns].curSrc || (t[e.ns].supported = !1, e.fillImg(t, { reselect: !0 })), t.currentSrc = t[e.ns].curSrc || t.src; } } function i(t) { for (var e, i = getComputedStyle(t).fontFamily, r = {}; null !== (e = u.exec(i));) { r[e[1]] = e[2]; } return r; } function r(e, i, r) { var n = t(i || 1, r || 0); b.call(e, "src") !== n && h.call(e, "src", n); } function n(t, e) { t.naturalWidth ? e(t) : setTimeout(n, 100, t, e); } function c(t) { var c = i(t), o = t[l]; if (c["object-fit"] = c["object-fit"] || "fill", !o.img) { if ("fill" === c["object-fit"]) return; if (!o.skipTest && f && !c["object-position"]) return; } if (!o.img) { o.img = new Image(t.width, t.height), o.img.srcset = b.call(t, "data-ofi-srcset") || t.srcset, o.img.src = b.call(t, "data-ofi-src") || t.src, h.call(t, "data-ofi-src", t.src), t.srcset && h.call(t, "data-ofi-srcset", t.srcset), r(t, t.naturalWidth || t.width, t.naturalHeight || t.height), t.srcset && (t.srcset = ""); try { s(t); } catch (t) { window.console && console.warn("https://bit.ly/ofi-old-browser"); } } e(o.img), t.style.backgroundImage = 'url("' + (o.img.currentSrc || o.img.src || '').toString().replace(/"/g, '\\"') + '")', t.style.backgroundPosition = c["object-position"] || "center", t.style.backgroundRepeat = "no-repeat", t.style.backgroundOrigin = "content-box", /scale-down/.test(c["object-fit"]) ? n(o.img, function () { o.img.naturalWidth > t.width || o.img.naturalHeight > t.height ? t.style.backgroundSize = "contain" : t.style.backgroundSize = "auto"; }) : t.style.backgroundSize = c["object-fit"].replace("none", "auto").replace("fill", "100% 100%"), n(o.img, function (e) { r(t, e.naturalWidth, e.naturalHeight); }); } function s(t) { var e = { get: function get(e) { return t[l].img[e ? e : "src"]; }, set: function set(e, i) { return t[l].img[i ? i : "src"] = e, h.call(t, "data-ofi-" + i, e), c(t), e; } }; Object.defineProperty(t, "src", e), Object.defineProperty(t, "currentSrc", { get: function get() { return e.get("currentSrc"); } }), Object.defineProperty(t, "srcset", { get: function get() { return e.get("srcset"); }, set: function set(t) { return e.set(t, "srcset"); } }); } function o() { function t(t, e) { return t[l] && t[l].img && ("src" === e || "srcset" === e) ? t[l].img : t; } d || (HTMLImageElement.prototype.getAttribute = function (e) { return b.call(t(this, e), e); }, HTMLImageElement.prototype.setAttribute = function (e, i) { return h.call(t(this, e), e, String(i)); }); } function a(t, e) { var i = !y && !t; if (e = e || {}, t = t || "img", d && !e.skipTest || !m) return !1; "img" === t ? t = document.getElementsByTagName("img") : "string" == typeof t ? t = document.querySelectorAll(t) : "length" in t || (t = [t]); for (var r = 0; r < t.length; r++) { t[r][l] = t[r][l] || { skipTest: e.skipTest }, c(t[r]); } i && (document.body.addEventListener("load", function (t) { "IMG" === t.target.tagName && a(t.target, { skipTest: e.skipTest }); }, !0), y = !0, t = "img"), e.watchMQ && window.addEventListener("resize", a.bind(null, t, { skipTest: e.skipTest })); } var l = "bfred-it:object-fit-images", u = /(object-fit|object-position)\s*:\s*([-.\w\s%]+)/g, g = "undefined" == typeof Image ? { style: { "object-position": 1 } } : new Image(), f = "object-fit" in g.style, d = "object-position" in g.style, m = "background-size" in g.style, p = "string" == typeof g.currentSrc, b = g.getAttribute, h = g.setAttribute, y = !1; return a.supportsObjectFit = f, a.supportsObjectPosition = d, o(), a; }();
+
+		aniGlobal.featureCard = function () {
+
+			var cardAffect = function cardAffect(itemList, itemTextClassName, btn) {
+				var delayTimeIcon = 0.1;
+				var delayTimeForNextCard = 0.4;
+				var delayTimeText = delayTimeIcon;
+
+				for (var i = 0; i < itemList.length; i++) {
+					itemList[i].classList.add('feature-card__text--effect');
+					itemList[i].style.animationDelay = "".concat(delayTimeIcon, "s");
+
+					var featureCardTextElements = $(".".concat(itemTextClassName))[i].children;
+
+					for (var a = 0; a < featureCardTextElements.length; a++) {
+                        var contentEle = featureCardTextElements[a].querySelectorAll('.animate-text');
+						var contentEleTotalLines = 0;
+
+						var n = 0;
+						while (n < featureCardTextElements.length) {
+							contentEleTotalLines += contentEle.length;
+							n++;
+						}
+
+						for (var b = 0; b < contentEle.length; b++) {
+							contentEle[b].classList.add('on-focus');
+							contentEle[b].style.animationDelay = "".concat(delayTimeText, "s");
+							var timeSpeed = delayTimeForNextCard / contentEleTotalLines;
+							delayTimeText += timeSpeed;
+						}
+					}
+					delayTimeIcon += delayTimeForNextCard;
+				}
+
+				if (btn !== undefined) {
+					btn.classList.add('tech-specs__btn--effect');
+					btn.style.animationDelay = "".concat(delayTimeText, "s");
+				}
+			};
+
+			return {
+				cardAffect: cardAffect
+			};
+
+		}();
+
+		aniGlobal.panelInView = function () {
+			// check if scrolling to panel
+			var scrollContent = function scrollContent(elm) {
+				var position = document.querySelector(".".concat(elm)).getBoundingClientRect();
+
+				if (
+					position.top > 0 && position.top < window.innerHeight ||
+					position.bottom < window.innerHeight ||
+					position.top < 0 && position.bottom > window.innerHeight) {
+					return true;
+				}
+			};
+
+			// check is element is in view
+			var checkElementInView = function checkElementInView(element) {
+				var bounding = element.getBoundingClientRect();
+				return (
+					bounding.top >= 0 &&
+					bounding.left >= 0 &&
+					bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					bounding.right <= (window.innerWidth || document.documentElement.clientWidth));
+
+			};
+
+			// check if panel partially/fully is visible
+			// for fully visible we set offsetHeight to 0
+			var checkPanelInView = function checkPanelInView(sectionName, offsetHeight) {
+				var position = document.querySelector(".".concat(sectionName)).getBoundingClientRect();
+
+				if (offsetHeight === undefined) {
+					offsetHeight = 1;
+				}
+
+				if (position.top < 0) {
+					return true;
+				}
+
+				return (
+					position.top >= 0 &&
+					position.left >= 0 &&
+					position.bottom - position.height * offsetHeight <= (
+						window.innerHeight || document.documentElement.clientHeight) &&
+					position.right <= (window.innerWidth || document.documentElement.clientWidth));
+
+			};
+
+			return {
+				scrollContent: scrollContent,
+				checkElementInView: checkElementInView,
+				checkPanelInView: checkPanelInView
+			};
+
+		}();
+
+		aniGlobal.utility = function () {
+			/**
+										   * @desc Utility Function to control the number of times a function is executes onEventHandler
+										   * @param {function, int, int}
+										   * @return {function}
+										   */
+			var debounce = function debounce(func, wait, immediate) {
+				var timeout;
+				return function () {
+					var context = this,
+						args = arguments;
+					var later = function later() {
+						timeout = null;
+						if (!immediate) func.apply(context, args);
+					};
+					var callImmediate = immediate && !timeout;
+					clearTimeout(timeout);
+					timeout = setTimeout(later, wait);
+					if (callImmediate) func.apply(context, args);
+				};
+			};
+
+			return {
+				debounce: debounce
+			};
+
+		}();
+
+        aniGlobal.lineAnimation = function () {
+            /**
+             * @desc Checks the HTML tag and check the lang attribute to check if the lang is supporated or not
+             *          NOTE: Currently only ja-jp, zh-hk, zh-cn, zh-tw is not supported but this can be expanded to encompass more 
+             *          languages that are not supported
+             * @param {void} NONE
+             * @return {boolean}
+             * */
+            var langSupported = function langSupported() {
+                var lang = document.querySelector('html').getAttribute('lang');
+                if (lang == 'ja-jp' || lang == 'zh-hk' || lang == 'zh-cn' || lang == 'zh-tw') {
+                    return false;
+                }
+                return true;
+            };
+
+			/**
+			* @desc Takes in Html Element containing text tags and seperates
+			*        each text tag into a seperate tag for each line break visable in the DOM
+			* @param {Array <HTMLElement>} textElements
+			* @return {void}
+			*/
+			var lineBreakText = function lineBreakText(textElements) {
+				var numTextElements = textElements.length;
+
+				for (var i = 0; i < numTextElements; i++) {
+					var innerText = textElements[i].innerHTML.split(' ');
+					var offSetHeight = 0;
+					var wrappingSpan = document.createElement('SPAN');
+
+					/**
+					* wrappingSpan is a container for the seperate text tags per line.
+					* This is inserted after the current text tag to maintain order of tags in HTML.
+					* The Original tag containing the text is then removed as the wrappingSpan will take the place of that
+					*/
+                    wrappingSpan.classList.add('animate-text-group');
+                    wrappingSpan.setAttribute('aria-hidden', true);
+					textElements[i].insertAdjacentElement('afterend', wrappingSpan);
+
+					var newLineTag = document.createElement(textElements[i].tagName);
+
+					// padding removed so new text tags will not have spaces inherited
+					//	from other classes when stacked on top of each other
+					newLineTag.style.margin = '0';
+					newLineTag.style.padding = '0';
+					newLineTag.classList.add('animate-text');
+
+					if (textElements[i].classList.contains('currently-focused')) {
+						newLineTag.classList.add('currently-focused');
+					}
+
+                    wrappingSpan.appendChild(newLineTag);
+
+                    // Check Regional Languages is supported
+                    var langSupported = aniGlobal.lineAnimation.langSupported();
+
+                    //If text contains anchor tag, set up animation for entire text block
+                    if (textElements[i].innerHTML.includes('<a') || !langSupported) {
+						newLineTag.innerHTML = textElements[i].innerHTML;
+
+						if (textElements[i].classList.contains('currently-focused')) {
+							newLineTag.classList.add('currently-focused');
+						}
+						wrappingSpan.appendChild(newLineTag);
+
+					} else {
+						//If No anchor tag is present in text, set up for line break animation
+						for (var j = 0; j < innerText.length; j++) {
+							var txtElement = '';
+							txtElement = innerText[j] + ' ';
+							newLineTag.innerHTML += txtElement;
+
+							//Set offSetHeight based on tag text height
+							if (offSetHeight === 0) {
+								offSetHeight = newLineTag.offsetHeight;
+							}
+
+							if (newLineTag.offsetHeight > offSetHeight) {
+								// slice off last word that caused offsetHeight to increase (overflow)
+								newLineTag.innerHTML = newLineTag.innerHTML.slice(
+									0,
+									newLineTag.innerHTML.length - txtElement.length);
+
+
+								newLineTag = document.createElement(textElements[i].tagName);
+
+								// padding removed so new text tags will not have spaces inherited
+								//	from other classes when stacked on top of each other
+								newLineTag.style.margin = '0';
+								newLineTag.style.padding = '0';
+								newLineTag.classList.add('animate-text');
+								if (textElements[i].classList.contains('currently-focused')) {
+									newLineTag.classList.add('currently-focused');
+								}
+								wrappingSpan.appendChild(newLineTag);
+								newLineTag.innerHTML += txtElement;
+							}
+						}
+					}
+
+
+					var parentElement = textElements[i].parentElement;
+					parentElement.removeChild(textElements[i]);
+				}
+			};
+
+			/**
+			   * @desc Reverts text elements that have been processed through function lineBreakText(). This 
+               *    function is called for setting up another call for lineBreakText() after the window has been resized
+			   * @param {Array<HTMLElement>} animatedTextGroup
+			   * @return {void}
+			   */
+			var revertLineBreakText = function revertLineBreakText(animatedTextGroup) {
+				/**
+				*  Recreates the original text tags in HTML in order be broken down again and
+				* 		processed by lineBreakText() to new text aligned based on the new size
+				* 		of the line breaks from resizing
+				*/
+
+				for (var i = 0; i < animatedTextGroup.length; i++) {
+					var tagType = null;
+					var innerText = '';
+					var numChildren = animatedTextGroup[i].children.length;
+
+					var currentlyFocused = undefined;
+					for (var j = 0; j < numChildren; j++) {
+						if (tagType === null) {
+							tagType = animatedTextGroup[i].children[j].tagName;
+						}
+
+						if (
+							currentlyFocused === undefined && (
+								animatedTextGroup[i].children[j].classList.contains('on-focus') ||
+								animatedTextGroup[i].children[j].classList.contains('currently-focused'))) {
+							currentlyFocused = true;
+						}
+
+						innerText += animatedTextGroup[i].children[j].innerHTML.split();
+					}
+                    var textElement = document.createElement(tagType);
+                    textElement.classList.add('animate-text-group');
+
+					//remove any prev set animation classes
+					textElement.classList.remove('on-focus');
+					textElement.classList.remove('off-focus');
+
+					if (currentlyFocused) {
+						textElement.classList.add('currently-focused');
+					}
+					textElement.innerHTML = innerText;
+
+					animatedTextGroup[i].insertAdjacentElement('afterend', textElement);
+
+					var parentElement = animatedTextGroup[i].parentElement;
+					parentElement.removeChild(animatedTextGroup[i]);
+				}
+			};
+
+			/**
+			   * @desc Animates Selected Collection of Elements containing 'animate-text' class
+			   * @param {Array <HTMLElement>} animatedText
+			   * @return void
+			   */
+			var initTextAnimation = function initTextAnimation(animatedText, delayTime) {
+				for (var i = 0; i < animatedText.length; i++) {
+					if (animatedText[i].classList.contains('animate-text')) {
+						animatedText[i].classList.add('on-focus');
+						animatedText[i].style.animationDelay = "".concat(delayTime, "s");
+						delayTime += 0.3;
+					}
+				}
+			};
+
+            return {
+                langSupported: langSupported,
+                lineBreakText: lineBreakText,
+                revertLineBreakText: revertLineBreakText,
+				initTextAnimation: initTextAnimation
+			};
+
+		}();
+
+		aniGlobal.panelHidden = function () {
+			var isPanelHidden = function isPanelHidden(el) {
+				if (getComputedStyle(el).display === "none") return true;
+				if (el === document.body) return false;
+
+				return isPanelHidden(el.parentElement);
+			};
+
+			return { isPanelHidden: isPanelHidden };
+		}();
+	})();
+﻿var aniCommon = aniCommon || {};
+    "use strict";
+    
+    (function () {
+        // check if a JS file is already loaded
+        var isFirstLoad = function isFirstLoad(nameSpace) {
+            var isFirst = nameSpace.firstLoad === undefined;
+            nameSpace.firstLoad = false;
+
+            return isFirst;
+        };
+
+        // if global.js is already loaded, don't run below code
+        if (!isFirstLoad(aniCommon)) return;
+
+        aniCommon.utility = function () {
+            
+            var delayCall = function delayCall(func, wait) {
+                var anonyf = func;
+                var period = wait;
+                var timeOutFunctionId;
+                return function () {
+                    clearTimeout(timeOutFunctionId);
+                    timeOutFunctionId = setTimeout(anonyf, period);
+                };
+            };
+
+            var reducedAnimation = function reducedAnimation() {
+                aniCommon.isReducedAnimation = window.matchMedia("(prefers-reduced-motion)").matches;
+                if (aniCommon.isReducedAnimation === true) {
+                    $('body').addClass('animation-off');
+                } else {
+                    $('body').addClass('animation-on');
+                }
+
+                return aniCommon.isReducedAnimation;
+            };
+
+            return {
+                delayCall: delayCall,
+                reducedAnimation: reducedAnimation
+            };
+
+        }();
+
+        aniCommon.isReducedAnimation = aniCommon.utility.reducedAnimation();
+        var mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        mediaQuery.addEventListener('change', () => {
+            aniCommon.isReducedAnimation = aniCommon.utility.reducedAnimation();
+        });
+    })();
+"use strict";
+(() => {
+    const dispatchToggleEvent = (value) => {
+        var animationToggleEvent = new CustomEvent('AEM_ANIMATION_ENABLED', {
+            bubbles: true,
+            detail: value
+        });
+        document.dispatchEvent(animationToggleEvent);
+    }
+
+    var mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var offText = document.getElementById('c-state-label-1').getAttribute('data-off-string');
+    var onText = document.getElementById('c-state-label-1').getAttribute('data-on-string');
+
+	let bodyContent = document.querySelector("body");
+
+    if (mediaQuery.matches) {
+        dispatchToggleEvent(false);
+        $('.reduced-animation-toggle .c-toggle button').attr("aria-checked", false);
+        $('.reduced-animation-toggle .c-toggle button+span').html(offText);
+        bodyContent?.classList.remove("animation-toggle");
+
+    } else {
+        dispatchToggleEvent(true);
+        $('.reduced-animation-toggle .c-toggle button').attr("aria-checked", true);
+        $('.reduced-animation-toggle .c-toggle button+span').html(onText);
+         bodyContent.classList.add("animation-toggle");
+
+    }
+
+
+    $('.reduced-animation-toggle .c-toggle button').click(function () {
+        const animationEnabled = $(this).attr('aria-checked') === 'false' ? true : false;
+        if(bodyContent && animationEnabled){
+            bodyContent.classList.add("animation-toggle");
+            bodyContent.classList.remove("animation-off");
+        }
+        else{
+             bodyContent.classList.remove("animation-toggle");
+             bodyContent.classList.add("animation-off");
+        }
+
+        aniCommon.utility.reducedAnimation(animationEnabled);
+
+        dispatchToggleEvent(animationEnabled);
+        $(this).attr('aria-checked', animationEnabled);
+        $('.reduced-animation-toggle .c-toggle button+span').html(animationEnabled ? onText : offText);
+    });
+})()

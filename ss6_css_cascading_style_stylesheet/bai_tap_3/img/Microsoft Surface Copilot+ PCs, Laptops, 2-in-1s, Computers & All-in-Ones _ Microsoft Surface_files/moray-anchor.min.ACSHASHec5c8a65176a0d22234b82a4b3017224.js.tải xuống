@@ -1,0 +1,681 @@
+/*! For license information please see moray-anchor-bundle.js.LICENSE.txt */
+(()=>{"use strict";const t=globalThis,e=t.ShadowRoot&&(void 0===t.ShadyCSS||t.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,o=Symbol(),n=new WeakMap;let r=class{constructor(t,e,n){if(this._$cssResult$=!0,n!==o)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e}get styleSheet(){let t=this.o;const o=this.t;if(e&&void 0===t){const e=void 0!==o&&1===o.length;e&&(t=n.get(o)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&n.set(o,t))}return t}toString(){return this.cssText}};const s=t=>new r("string"==typeof t?t:t+"",void 0,o),i=(t,...e)=>{const n=1===t.length?t[0]:e.reduce(((e,o,n)=>e+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(o)+t[n+1]),t[0]);return new r(n,t,o)},a=e?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const o of t.cssRules)e+=o.cssText;return s(e)})(t):t,{is:l,defineProperty:d,getOwnPropertyDescriptor:c,getOwnPropertyNames:h,getOwnPropertySymbols:u,getPrototypeOf:g}=Object,v=globalThis,p=v.trustedTypes,m=p?p.emptyScript:"",$=v.reactiveElementPolyfillSupport,b=(t,e)=>t,f={toAttribute(t,e){switch(e){case Boolean:t=t?m:null;break;case Object:case Array:t=null==t?t:JSON.stringify(t)}return t},fromAttribute(t,e){let o=t;switch(e){case Boolean:o=null!==t;break;case Number:o=null===t?null:Number(t);break;case Object:case Array:try{o=JSON.parse(t)}catch{o=null}}return o}},_=(t,e)=>!l(t,e),w={attribute:!0,type:String,converter:f,reflect:!1,hasChanged:_};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),v.litPropertyMetadata??(v.litPropertyMetadata=new WeakMap);class y extends HTMLElement{static addInitializer(t){this._$Ei(),(this.l??(this.l=[])).push(t)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(t,e=w){if(e.state&&(e.attribute=!1),this._$Ei(),this.elementProperties.set(t,e),!e.noAccessor){const o=Symbol(),n=this.getPropertyDescriptor(t,o,e);void 0!==n&&d(this.prototype,t,n)}}static getPropertyDescriptor(t,e,o){const{get:n,set:r}=c(this.prototype,t)??{get(){return this[e]},set(t){this[e]=t}};return{get(){return null==n?void 0:n.call(this)},set(e){const s=null==n?void 0:n.call(this);r.call(this,e),this.requestUpdate(t,s,o)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)??w}static _$Ei(){if(this.hasOwnProperty(b("elementProperties")))return;const t=g(this);t.finalize(),void 0!==t.l&&(this.l=[...t.l]),this.elementProperties=new Map(t.elementProperties)}static finalize(){if(this.hasOwnProperty(b("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(b("properties"))){const t=this.properties,e=[...h(t),...u(t)];for(const o of e)this.createProperty(o,t[o])}const t=this[Symbol.metadata];if(null!==t){const e=litPropertyMetadata.get(t);if(void 0!==e)for(const[t,o]of e)this.elementProperties.set(t,o)}this._$Eh=new Map;for(const[t,e]of this.elementProperties){const o=this._$Eu(t,e);void 0!==o&&this._$Eh.set(o,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(t){const e=[];if(Array.isArray(t)){const o=new Set(t.flat(1/0).reverse());for(const t of o)e.unshift(a(t))}else void 0!==t&&e.push(a(t));return e}static _$Eu(t,e){const o=e.attribute;return!1===o?void 0:"string"==typeof o?o:"string"==typeof t?t.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){var t;this._$ES=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$E_(),this.requestUpdate(),null==(t=this.constructor.l)||t.forEach((t=>t(this)))}addController(t){var e;(this._$EO??(this._$EO=new Set)).add(t),void 0!==this.renderRoot&&this.isConnected&&(null==(e=t.hostConnected)||e.call(t))}removeController(t){var e;null==(e=this._$EO)||e.delete(t)}_$E_(){const t=new Map,e=this.constructor.elementProperties;for(const o of e.keys())this.hasOwnProperty(o)&&(t.set(o,this[o]),delete this[o]);t.size>0&&(this._$Ep=t)}createRenderRoot(){const o=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return((o,n)=>{if(e)o.adoptedStyleSheets=n.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet));else for(const e of n){const n=document.createElement("style"),r=t.litNonce;void 0!==r&&n.setAttribute("nonce",r),n.textContent=e.cssText,o.appendChild(n)}})(o,this.constructor.elementStyles),o}connectedCallback(){var t;this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),null==(t=this._$EO)||t.forEach((t=>{var e;return null==(e=t.hostConnected)?void 0:e.call(t)}))}enableUpdating(t){}disconnectedCallback(){var t;null==(t=this._$EO)||t.forEach((t=>{var e;return null==(e=t.hostDisconnected)?void 0:e.call(t)}))}attributeChangedCallback(t,e,o){this._$AK(t,o)}_$EC(t,e){var o;const n=this.constructor.elementProperties.get(t),r=this.constructor._$Eu(t,n);if(void 0!==r&&!0===n.reflect){const s=(void 0!==(null==(o=n.converter)?void 0:o.toAttribute)?n.converter:f).toAttribute(e,n.type);this._$Em=t,null==s?this.removeAttribute(r):this.setAttribute(r,s),this._$Em=null}}_$AK(t,e){var o;const n=this.constructor,r=n._$Eh.get(t);if(void 0!==r&&this._$Em!==r){const t=n.getPropertyOptions(r),s="function"==typeof t.converter?{fromAttribute:t.converter}:void 0!==(null==(o=t.converter)?void 0:o.fromAttribute)?t.converter:f;this._$Em=r,this[r]=s.fromAttribute(e,t.type),this._$Em=null}}requestUpdate(t,e,o){if(void 0!==t){if(o??(o=this.constructor.getPropertyOptions(t)),!(o.hasChanged??_)(this[t],e))return;this.P(t,e,o)}!1===this.isUpdatePending&&(this._$ES=this._$ET())}P(t,e,o){this._$AL.has(t)||this._$AL.set(t,e),!0===o.reflect&&this._$Em!==t&&(this._$Ej??(this._$Ej=new Set)).add(t)}async _$ET(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var t;if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[t,e]of this._$Ep)this[t]=e;this._$Ep=void 0}const t=this.constructor.elementProperties;if(t.size>0)for(const[e,o]of t)!0!==o.wrapped||this._$AL.has(e)||void 0===this[e]||this.P(e,this[e],o)}let e=!1;const o=this._$AL;try{e=this.shouldUpdate(o),e?(this.willUpdate(o),null==(t=this._$EO)||t.forEach((t=>{var e;return null==(e=t.hostUpdate)?void 0:e.call(t)})),this.update(o)):this._$EU()}catch(t){throw e=!1,this._$EU(),t}e&&this._$AE(o)}willUpdate(t){}_$AE(t){var e;null==(e=this._$EO)||e.forEach((t=>{var e;return null==(e=t.hostUpdated)?void 0:e.call(t)})),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$EU(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(t){return!0}update(t){this._$Ej&&(this._$Ej=this._$Ej.forEach((t=>this._$EC(t,this[t])))),this._$EU()}updated(t){}firstUpdated(t){}}y.elementStyles=[],y.shadowRootOptions={mode:"open"},y[b("elementProperties")]=new Map,y[b("finalized")]=new Map,null==$||$({ReactiveElement:y}),(v.reactiveElementVersions??(v.reactiveElementVersions=[])).push("2.0.4");const A=globalThis,k=A.trustedTypes,x=k?k.createPolicy("lit-html",{createHTML:t=>t}):void 0,C="$lit$",S=`lit$${(Math.random()+"").slice(9)}$`,E="?"+S,B=`<${E}>`,P=document,M=()=>P.createComment(""),z=t=>null===t||"object"!=typeof t&&"function"!=typeof t,I=Array.isArray,O="[ \t\n\f\r]",H=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,Z=/-->/g,U=/>/g,L=RegExp(`>|${O}(?:([^\\s"'>=/]+)(${O}*=${O}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),T=/'/g,R=/"/g,N=/^(?:script|style|textarea|title)$/i,j=(t,...e)=>({_$litType$:1,strings:t,values:e}),D=Symbol.for("lit-noChange"),V=Symbol.for("lit-nothing"),W=new WeakMap,F=P.createTreeWalker(P,129);function q(t,e){if(!Array.isArray(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==x?x.createHTML(e):e}class X{constructor({strings:t,_$litType$:e},o){let n;this.parts=[];let r=0,s=0;const i=t.length-1,a=this.parts,[l,d]=((t,e)=>{const o=t.length-1,n=[];let r,s=2===e?"<svg>":"",i=H;for(let e=0;e<o;e++){const o=t[e];let a,l,d=-1,c=0;for(;c<o.length&&(i.lastIndex=c,l=i.exec(o),null!==l);)c=i.lastIndex,i===H?"!--"===l[1]?i=Z:void 0!==l[1]?i=U:void 0!==l[2]?(N.test(l[2])&&(r=RegExp("</"+l[2],"g")),i=L):void 0!==l[3]&&(i=L):i===L?">"===l[0]?(i=r??H,d=-1):void 0===l[1]?d=-2:(d=i.lastIndex-l[2].length,a=l[1],i=void 0===l[3]?L:'"'===l[3]?R:T):i===R||i===T?i=L:i===Z||i===U?i=H:(i=L,r=void 0);const h=i===L&&t[e+1].startsWith("/>")?" ":"";s+=i===H?o+B:d>=0?(n.push(a),o.slice(0,d)+C+o.slice(d)+S+h):o+S+(-2===d?e:h)}return[q(t,s+(t[o]||"<?>")+(2===e?"</svg>":"")),n]})(t,e);if(this.el=X.createElement(l,o),F.currentNode=this.el.content,2===e){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes)}for(;null!==(n=F.nextNode())&&a.length<i;){if(1===n.nodeType){if(n.hasAttributes())for(const t of n.getAttributeNames())if(t.endsWith(C)){const e=d[s++],o=n.getAttribute(t).split(S),i=/([.?@])?(.*)/.exec(e);a.push({type:1,index:r,name:i[2],strings:o,ctor:"."===i[1]?Y:"?"===i[1]?tt:"@"===i[1]?et:Q}),n.removeAttribute(t)}else t.startsWith(S)&&(a.push({type:6,index:r}),n.removeAttribute(t));if(N.test(n.tagName)){const t=n.textContent.split(S),e=t.length-1;if(e>0){n.textContent=k?k.emptyScript:"";for(let o=0;o<e;o++)n.append(t[o],M()),F.nextNode(),a.push({type:2,index:++r});n.append(t[e],M())}}}else if(8===n.nodeType)if(n.data===E)a.push({type:2,index:r});else{let t=-1;for(;-1!==(t=n.data.indexOf(S,t+1));)a.push({type:7,index:r}),t+=S.length-1}r++}}static createElement(t,e){const o=P.createElement("template");return o.innerHTML=t,o}}function J(t,e,o=t,n){var r,s;if(e===D)return e;let i=void 0!==n?null==(r=o._$Co)?void 0:r[n]:o._$Cl;const a=z(e)?void 0:e._$litDirective$;return(null==i?void 0:i.constructor)!==a&&(null==(s=null==i?void 0:i._$AO)||s.call(i,!1),void 0===a?i=void 0:(i=new a(t),i._$AT(t,o,n)),void 0!==n?(o._$Co??(o._$Co=[]))[n]=i:o._$Cl=i),void 0!==i&&(e=J(t,i._$AS(t,e.values),i,n)),e}class K{constructor(t,e){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:e},parts:o}=this._$AD,n=((null==t?void 0:t.creationScope)??P).importNode(e,!0);F.currentNode=n;let r=F.nextNode(),s=0,i=0,a=o[0];for(;void 0!==a;){if(s===a.index){let e;2===a.type?e=new G(r,r.nextSibling,this,t):1===a.type?e=new a.ctor(r,a.name,a.strings,this,t):6===a.type&&(e=new ot(r,this,t)),this._$AV.push(e),a=o[++i]}s!==(null==a?void 0:a.index)&&(r=F.nextNode(),s++)}return F.currentNode=P,n}p(t){let e=0;for(const o of this._$AV)void 0!==o&&(void 0!==o.strings?(o._$AI(t,o,e),e+=o.strings.length-2):o._$AI(t[e])),e++}}class G{get _$AU(){var t;return(null==(t=this._$AM)?void 0:t._$AU)??this._$Cv}constructor(t,e,o,n){this.type=2,this._$AH=V,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=o,this.options=n,this._$Cv=(null==n?void 0:n.isConnected)??!0}get parentNode(){let t=this._$AA.parentNode;const e=this._$AM;return void 0!==e&&11===(null==t?void 0:t.nodeType)&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=J(this,t,e),z(t)?t===V||null==t||""===t?(this._$AH!==V&&this._$AR(),this._$AH=V):t!==this._$AH&&t!==D&&this._(t):void 0!==t._$litType$?this.$(t):void 0!==t.nodeType?this.T(t):(t=>I(t)||"function"==typeof(null==t?void 0:t[Symbol.iterator]))(t)?this.k(t):this._(t)}S(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.S(t))}_(t){this._$AH!==V&&z(this._$AH)?this._$AA.nextSibling.data=t:this.T(P.createTextNode(t)),this._$AH=t}$(t){var e;const{values:o,_$litType$:n}=t,r="number"==typeof n?this._$AC(t):(void 0===n.el&&(n.el=X.createElement(q(n.h,n.h[0]),this.options)),n);if((null==(e=this._$AH)?void 0:e._$AD)===r)this._$AH.p(o);else{const t=new K(r,this),e=t.u(this.options);t.p(o),this.T(e),this._$AH=t}}_$AC(t){let e=W.get(t.strings);return void 0===e&&W.set(t.strings,e=new X(t)),e}k(t){I(this._$AH)||(this._$AH=[],this._$AR());const e=this._$AH;let o,n=0;for(const r of t)n===e.length?e.push(o=new G(this.S(M()),this.S(M()),this,this.options)):o=e[n],o._$AI(r),n++;n<e.length&&(this._$AR(o&&o._$AB.nextSibling,n),e.length=n)}_$AR(t=this._$AA.nextSibling,e){var o;for(null==(o=this._$AP)||o.call(this,!1,!0,e);t&&t!==this._$AB;){const e=t.nextSibling;t.remove(),t=e}}setConnected(t){var e;void 0===this._$AM&&(this._$Cv=t,null==(e=this._$AP)||e.call(this,t))}}class Q{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,e,o,n,r){this.type=1,this._$AH=V,this._$AN=void 0,this.element=t,this.name=e,this._$AM=n,this.options=r,o.length>2||""!==o[0]||""!==o[1]?(this._$AH=Array(o.length-1).fill(new String),this.strings=o):this._$AH=V}_$AI(t,e=this,o,n){const r=this.strings;let s=!1;if(void 0===r)t=J(this,t,e,0),s=!z(t)||t!==this._$AH&&t!==D,s&&(this._$AH=t);else{const n=t;let i,a;for(t=r[0],i=0;i<r.length-1;i++)a=J(this,n[o+i],e,i),a===D&&(a=this._$AH[i]),s||(s=!z(a)||a!==this._$AH[i]),a===V?t=V:t!==V&&(t+=(a??"")+r[i+1]),this._$AH[i]=a}s&&!n&&this.j(t)}j(t){t===V?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"")}}class Y extends Q{constructor(){super(...arguments),this.type=3}j(t){this.element[this.name]=t===V?void 0:t}}class tt extends Q{constructor(){super(...arguments),this.type=4}j(t){this.element.toggleAttribute(this.name,!!t&&t!==V)}}class et extends Q{constructor(t,e,o,n,r){super(t,e,o,n,r),this.type=5}_$AI(t,e=this){if((t=J(this,t,e,0)??V)===D)return;const o=this._$AH,n=t===V&&o!==V||t.capture!==o.capture||t.once!==o.once||t.passive!==o.passive,r=t!==V&&(o===V||n);n&&this.element.removeEventListener(this.name,this,o),r&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){var e;"function"==typeof this._$AH?this._$AH.call((null==(e=this.options)?void 0:e.host)??this.element,t):this._$AH.handleEvent(t)}}class ot{constructor(t,e,o){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=o}get _$AU(){return this._$AM._$AU}_$AI(t){J(this,t)}}const nt=A.litHtmlPolyfillSupport;null==nt||nt(X,G),(A.litHtmlVersions??(A.litHtmlVersions=[])).push("3.1.2");class rt extends y{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(t){const e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=((t,e,o)=>{const n=(null==o?void 0:o.renderBefore)??e;let r=n._$litPart$;if(void 0===r){const t=(null==o?void 0:o.renderBefore)??null;n._$litPart$=r=new G(e.insertBefore(M(),t),t,void 0,o??{})}return r._$AI(t),r})(e,this.renderRoot,this.renderOptions)}connectedCallback(){var t;super.connectedCallback(),null==(t=this._$Do)||t.setConnected(!0)}disconnectedCallback(){var t;super.disconnectedCallback(),null==(t=this._$Do)||t.setConnected(!1)}render(){return D}}var st;rt._$litElement$=!0,rt.finalized=!0,null==(st=globalThis.litElementHydrateSupport)||st.call(globalThis,{LitElement:rt});const it=globalThis.litElementPolyfillSupport;null==it||it({LitElement:rt}),(globalThis.litElementVersions??(globalThis.litElementVersions=[])).push("4.0.4");const at=t=>(e,o)=>{customElements.get(t)?console.warn(`${t} is already defined.`):void 0!==o?o.addInitializer((()=>{customElements.define(t,e)})):customElements.define(t,e)},lt={attribute:!0,type:String,converter:f,reflect:!1,hasChanged:_},dt=(t=lt,e,o)=>{const{kind:n,metadata:r}=o;let s=globalThis.litPropertyMetadata.get(r);if(void 0===s&&globalThis.litPropertyMetadata.set(r,s=new Map),s.set(o.name,t),"accessor"===n){const{name:n}=o;return{set(o){const r=e.get.call(this);e.set.call(this,o),this.requestUpdate(n,r,t)},init(e){return void 0!==e&&this.P(n,void 0,t),e}}}if("setter"===n){const{name:n}=o;return function(o){const r=this[n];e.call(this,o),this.requestUpdate(n,r,t)}}throw Error("Unsupported decorator location: "+n)};function ct(t){return(e,o)=>"object"==typeof o?dt(t,e,o):((t,e,o)=>{const n=e.hasOwnProperty(o);return e.constructor.createProperty(o,n?{...t,wrapped:!0}:t),n?Object.getOwnPropertyDescriptor(e,o):void 0})(t,e,o)}function ht(t){return ct({...t,state:!0,attribute:!1})}const ut=(t,e,o)=>(o.configurable=!0,o.enumerable=!0,Reflect.decorate&&"object"!=typeof e&&Object.defineProperty(t,e,o),o);function gt(t){return(e,o)=>{const{slot:n,selector:r}=t??{},s="slot"+(n?`[name=${n}]`:":not([name])");return ut(e,o,{get(){var e;const o=null==(e=this.renderRoot)?void 0:e.querySelector(s),n=(null==o?void 0:o.assignedElements(t))??[];return void 0===r?n:n.filter((t=>t.matches(r)))}})}}function vt(t){return(e,o)=>{const{slot:n}=t??{},r="slot"+(n?`[name=${n}]`:":not([name])");return ut(e,o,{get(){var e;const o=null==(e=this.renderRoot)?void 0:e.querySelector(r);return(null==o?void 0:o.assignedNodes(t))??[]}})}}class pt{constructor(t){}get _$AU(){return this._$AM._$AU}_$AT(t,e,o){this._$Ct=t,this._$AM=e,this._$Ci=o}_$AS(t,e){return this.update(t,e)}update(t,e){return this.render(...e)}}const mt=(t=>(...e)=>({_$litDirective$:t,values:e}))(class extends pt{constructor(t){var e;if(super(t),1!==t.type||"class"!==t.name||(null==(e=t.strings)?void 0:e.length)>2)throw Error("`classMap()` can only be used in the `class` attribute and must be the only part in the attribute.")}render(t){return" "+Object.keys(t).filter((e=>t[e])).join(" ")+" "}update(t,[e]){var o,n;if(void 0===this.st){this.st=new Set,void 0!==t.strings&&(this.nt=new Set(t.strings.join(" ").split(/\s/).filter((t=>""!==t))));for(const t in e)e[t]&&(null==(o=this.nt)||!o.has(t))&&this.st.add(t);return this.render(e)}const r=t.element.classList;for(const t of this.st)t in e||(r.remove(t),this.st.delete(t));for(const t in e){const o=!!e[t];o===this.st.has(t)||null!=(n=this.nt)&&n.has(t)||(o?(r.add(t),this.st.add(t)):(r.remove(t),this.st.delete(t)))}return D}}),$t=i`var(--ds-vfi-outline-width, 0.1875rem)`,bt=i`var(--ds-vfi-outline-style, dotted)`,ft=i`var(--ds-vfi-outline-offset, 0.25rem)`,_t=i`calc(calc(${$t} + 0.1875rem) * -1)`,wt=(i`calc(calc(${$t}) * -1)`,i`var(--ds-vfi-text-color, currentcolor ${bt} ${$t})`),yt=i`
+  outline: ${wt};
+`,At=i`
+  ${yt}
+  outline-offset: ${_t};
+`,kt=i`
+  ${yt}
+  outline-offset: ${ft};
+`,xt="transparent",Ct="0.75rem",St="#0067b8",Et="rgba(0, 0, 0, 0.1)",Bt="rgba(0, 103, 184, 0.15)",Pt="#0067b8",Mt="#fff",zt="#0067b8",It="action-trigger",Ot="button",Ht="button--faint",Zt="button--outline",Ut="button--link",Lt="small",Tt="medium",Rt="large",Nt={gap:"0.4375em",fontWeight:"600",borderWidth:"0.125rem",borderColor:xt,borderRadius:"0.25rem",backgroundColor:St,color:Mt,depth:"0 0 0 0 rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(0, 0, 0, 0.12)",hoverBorderColor:xt,hoverBackgroundColor:St,hoverBackgroundImage:`linear-gradient(var(--ds-theme-background-accent-strong-hover, ${Et}), var(--ds-theme-background-accent-strong-hover, ${Et}))`,hoverColor:Mt,hoverDepth:"0 0 0.25rem 0 rgba(0, 0, 0, 0.12), 0 0 0.25rem 0 rgba(0, 0, 0, 0.12)",disabledOpacity:"0.3",defaultPaddingBlockEnd:"0.625rem",defaultPaddingBlockStart:"0.625rem",defaultPaddingInlineEnd:Ct,defaultPaddingInlineStart:Ct,defaultFontSize:"1rem",smallPaddingBlockEnd:"0.5625rem",smallPaddingBlockStart:"0.5625rem",smallPaddingInlineEnd:Ct,smallPaddingInlineStart:Ct,smallFontSize:"0.875rem",mediumPaddingBlockEnd:"0.625rem",mediumPaddingBlockStart:"0.625rem",mediumPaddingInlineEnd:Ct,mediumPaddingInlineStart:Ct,mediumFontSize:"1rem",largePaddingBlockEnd:"0.8125rem",largePaddingBlockStart:"0.8125rem",largePaddingInlineEnd:Ct,largePaddingInlineStart:Ct,largeFontSize:"1.125rem",pillBorderRadius:"60rem",outlineBorderColor:"currentcolor",outlineBackgroundColor:xt,outlineColor:zt,outlineHoverBorderColor:"currentcolor",outlineHoverBackgroundColor:xt,outlineHoverBackgroundImage:`linear-gradient(var(--ds-theme-background-accent-subtle-normal, ${Bt}), var(--ds-theme-background-accent-subtle-normal, ${Bt}))`,outlineHoverColor:zt,faintBorderColor:xt,faintBackgroundColor:xt,faintBackgroundImage:`linear-gradient(var(--ds-theme-background-accent-subtle-normal, ${Bt}), var(--ds-theme-background-accent-subtle-normal, ${Bt}))`,faintColor:zt,faintHoverBorderColor:xt,faintHoverBackgroundColor:xt,faintHoverBackgroundImage:"none",faintHoverColor:zt,linkColor:zt,linkInactiveColor:"#757575",activeBorderColor:"#0067b8",activeBackgroundColor:"#fff",activeBackgroundImage:`linear-gradient(var(--ds-theme-background-accent-subtle-normal, ${Bt}), var(--ds-theme-background-accent-subtle-normal, ${Bt}))`,activeColor:zt,outlineActiveBorderColor:xt,outlineActiveBackgroundColor:Pt,outlineActiveBackgroundImage:"none",outlineActiveColor:Mt,faintActiveBorderColor:xt,faintActiveBackgroundColor:Pt,faintActiveBackgroundImage:"none",faintActiveColor:Mt},jt=i`
+  /**
+ * Remove the default 'border-radius' that macOS Chrome adds
+ * Details at https://github.com/twbs/bootstrap/issues/24093
+ */
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  display: inline-flex;
+  align-items: center;
+  border: 0 solid transparent;
+  cursor: pointer;
+`,Dt=i`
+  :host([appearance^='${s(Ot)}']) a,
+  :host([appearance^='${s(Ot)}']) button {
+    justify-content: center;
+    gap: var(--ds-button-gap, ${s(Nt.gap)});
+    font-weight: var(--ds-button-font-weight, ${s(Nt.fontWeight)});
+    border-width: var(--ds-button-border-width, ${s(Nt.borderWidth)});
+    border-color: var(
+      --ds-button-border-color,
+      var(--ds-color-transparent, ${s(Nt.borderColor)})
+    );
+    border-radius: var(
+      --ds-button-border-radius,
+      var(--ds-radii-10, ${s(Nt.borderRadius)})
+    );
+    background-color: var(
+      --ds-button-background-color,
+      var(
+        --ds-theme-background-accent-strong-normal,
+        ${s(Nt.backgroundColor)}
+      )
+    );
+    color: var(
+      --ds-button-color,
+      var(--ds-theme-foreground-accent-strong-normal, ${s(Nt.color)})
+    );
+    text-decoration: none;
+    line-height: 1;
+    padding-inline-end: var(
+      --ds-button-default-padding-inline-end,
+      ${s(Nt.defaultPaddingInlineEnd)}
+    );
+    padding-inline-start: var(
+      --ds-button-default-padding-inline-start,
+      ${s(Nt.defaultPaddingInlineEnd)}
+    );
+    padding-block-end: var(
+      --ds-button-default-padding-block-end,
+      ${s(Nt.defaultPaddingBlockEnd)}
+    );
+    padding-block-start: var(
+      --ds-button-default-padding-block-start,
+      ${s(Nt.defaultPaddingBlockStart)}
+    );
+    font-size: var(
+      --ds-button-default-font-size,
+      ${s(Nt.defaultFontSize)}
+    );
+    box-shadow: var(
+      --ds-button-box-shadow,
+      var(--ds-depth-none, ${s(Nt.depth)})
+    );
+  }
+
+  :host([appearance^='${s(Ot)}']) a:focus,
+  :host([appearance^='${s(Ot)}']) button:focus {
+    ${At}
+  }
+
+  :host([appearance^='${s(Ot)}']:not([disabled])) a:hover,
+  :host([appearance^='${s(Ot)}']:not([disabled])) button:hover,
+  :host([appearance^='${s(Ot)}']:not([disabled])) a:focus,
+  :host([appearance^='${s(Ot)}']:not([disabled])) button:focus {
+    border-color: var(
+      --ds-button-hover-border-color,
+      var(--ds-color-transparent, ${s(Nt.hoverBorderColor)})
+    );
+    background-color: var(
+      --ds-button-hover-background-color,
+      var(
+        --ds-theme-background-accent-strong-normal,
+        ${s(Nt.hoverBackgroundColor)}
+      )
+    );
+    background-image: var(
+      --ds-button-hover-background-image,
+      ${s(Nt.hoverBackgroundImage)}
+    );
+    color: var(
+      --ds-button-hover-color,
+      var(
+        --ds-theme-foreground-accent-strong-normal,
+        ${s(Nt.hoverColor)}
+      )
+    );
+    box-shadow: var(
+      --ds-button-hover-box-shadow,
+      var(--ds-depth-4, ${s(Nt.hoverDepth)})
+    );
+  }
+
+  /* TODO: button only styles (do not apply to anchor styled buttons)
+   *  - inactive
+   *  - disabled
+   *  - link button
+   *  - active
+   */
+
+  /* ------- Button disabled -------- */
+
+  :host([appearance^='${s(Ot)}'][disabled]) button {
+    opacity: var(--ds-button-disabled-opacity, ${s(Nt.disabledOpacity)});
+    background-image: none;
+    box-shadow: none;
+  }
+
+  /* ------- Button active -------- */
+
+  :host([appearance='${s(Ot)}'][active]:not([disabled])) button {
+    border-color: var(
+      --ds-button-active-border-color,
+      var(
+        --ds-theme-border-accent-strong-normal,
+        ${s(Nt.activeBorderColor)}
+      )
+    );
+    background-color: var(
+      --ds-button-active-background-color,
+      var(
+        --ds-theme-background-neutral-fade,
+        ${s(Nt.activeBackgroundColor)}
+      )
+    );
+    background-image: var(
+      --ds-button-active-background-image,
+      ${s(Nt.activeBackgroundImage)}
+    );
+    color: var(
+      --ds-button-active-color,
+      var(
+        --ds-theme-foreground-accent-subtle-normal,
+        ${s(Nt.activeColor)}
+      )
+    );
+  }
+
+  /* ------- Button active HCM -------- */
+
+  :host(
+      [appearance^='${s(Ot)}']:not(
+          [appearance='${s(Ut)}']
+        )[active]:not([disabled])
+    )
+    button {
+    @media (forced-colors: active) {
+      color: CanvasText;
+      background-color: SelectedItem;
+    }
+  }
+
+  /* ------- Button small -------- */
+
+  :host(
+      [appearance^='${s(Ot)}'][size='${s(Lt)}']
+    )
+    a,
+  :host(
+      [appearance^='${s(Ot)}'][size='${s(Lt)}']
+    )
+    button {
+    padding-inline-end: var(
+      --ds-button-small-padding-inline-end,
+      ${s(Nt.smallPaddingInlineEnd)}
+    );
+    padding-inline-start: var(
+      --ds-button-small-padding-inline-start,
+      ${s(Nt.smallPaddingInlineEnd)}
+    );
+    padding-block-end: var(
+      --ds-button-small-padding-block-end,
+      ${s(Nt.smallPaddingBlockEnd)}
+    );
+    padding-block-start: var(
+      --ds-button-small-padding-block-end,
+      ${s(Nt.smallPaddingBlockEnd)}
+    );
+    font-size: var(--ds-button-small-font-size, ${s(Nt.smallFontSize)});
+  }
+
+  /* ------- Button medium -------- */
+
+  :host(
+      [appearance^='${s(Ot)}'][size='${s(Tt)}']
+    )
+    a,
+  :host(
+      [appearance^='${s(Ot)}'][size='${s(Tt)}']
+    )
+    button {
+    padding-inline-end: var(
+      --ds-button-medium-padding-inline-end,
+      ${s(Nt.mediumPaddingInlineEnd)}
+    );
+    padding-inline-start: var(
+      --ds-button-medium-padding-inline-start,
+      ${s(Nt.mediumPaddingInlineEnd)}
+    );
+    padding-block-end: var(
+      --ds-button-medium-padding-block-end,
+      ${s(Nt.mediumPaddingBlockEnd)}
+    );
+    padding-block-start: var(
+      --ds-button-medium-padding-block-end,
+      ${s(Nt.mediumPaddingBlockEnd)}
+    );
+    font-size: var(
+      --ds-button-medium-font-size,
+      ${s(Nt.mediumFontSize)}
+    );
+  }
+
+  /* ------- Button large -------- */
+
+  :host(
+      [appearance^='${s(Ot)}'][size='${s(Rt)}']
+    )
+    a,
+  :host(
+      [appearance^='${s(Ot)}'][size='${s(Rt)}']
+    )
+    button {
+    padding-inline-end: var(
+      --ds-button-large-padding-inline-end,
+      ${s(Nt.largePaddingInlineEnd)}
+    );
+    padding-inline-start: var(
+      --ds-button-large-padding-inline-start,
+      ${s(Nt.largePaddingInlineEnd)}
+    );
+    padding-block-end: var(
+      --ds-button-large-padding-block-end,
+      ${s(Nt.largePaddingBlockEnd)}
+    );
+    padding-block-start: var(
+      --ds-button-large-padding-block-end,
+      ${s(Nt.largePaddingBlockEnd)}
+    );
+    font-size: var(--ds-button-large-font-size, ${s(Nt.largeFontSize)});
+  }
+
+  /* ------- Button block -------- */
+
+  :host([appearance^='${s(Ot)}'][block]) a,
+  :host([appearance^='${s(Ot)}'][block]) button {
+    display: flex;
+    width: 100%;
+  }
+
+  /* ------- Button pill -------- */
+
+  :host([appearance^='${s(Ot)}'][pill]) a,
+  :host([appearance^='${s(Ot)}'][pill]) button {
+    border-radius: var(
+      --ds-button-pill-border-radius,
+      var(--ds-radii-pill, ${s(Nt.pillBorderRadius)})
+    );
+  }
+
+  /* ------- Button outline -------- */
+
+  :host([appearance^='${s(Zt)}']) a,
+  :host([appearance^='${s(Zt)}']) button {
+    background-color: var(
+      --ds-button-outline-background-color,
+      var(--ds-color-transparent, ${s(Nt.outlineBackgroundColor)})
+    );
+    color: var(
+      --ds-button-outline-color,
+      var(
+        --ds-theme-foreground-accent-subtle-normal,
+        ${s(Nt.outlineColor)}
+      )
+    );
+    border-color: var(
+      --ds-button-outline-border-color,
+      ${s(Nt.outlineBorderColor)}
+    );
+  }
+
+  :host([appearance^='${s(Zt)}']:not([disabled])) a:hover,
+  :host([appearance^='${s(Zt)}']:not([disabled])) button:hover,
+  :host([appearance^='${s(Zt)}']:not([disabled])) a:focus,
+  :host([appearance^='${s(Zt)}']:not([disabled])) button:focus {
+    border-color: var(
+      --ds-button-outline-hover-border-color,
+      ${s(Nt.outlineHoverBorderColor)}
+    );
+    background-color: var(
+      --ds-button-outline-hover-background-color,
+      var(--ds-color-transparent, ${s(Nt.outlineHoverBackgroundColor)})
+    );
+    background-image: var(
+      --ds-button-outline-hover-background-image,
+      ${s(Nt.outlineHoverBackgroundImage)}
+    );
+    color: var(
+      --ds-button-outline-hover-color,
+      var(
+        --ds-theme-foreground-accent-subtle-normal,
+        ${s(Nt.outlineHoverColor)}
+      )
+    );
+    box-shadow: none;
+  }
+
+  /* ------- Button outline active -------- */
+
+  :host([appearance^='${s(Zt)}'][active]) button,
+  :host([appearance^='${s(Zt)}'][active]) button:focus,
+  :host([appearance^='${s(Zt)}'][active]) button:hover {
+    color: var(
+      --ds-button-outline-active-color,
+      var(
+        --ds-theme-foreground-accent-strong-normal,
+        ${s(Nt.outlineActiveColor)}
+      )
+    );
+    border-color: var(
+      --ds-button-outline-active-border-color,
+      ${s(Nt.outlineActiveBorderColor)}
+    );
+    background-color: var(
+      --ds-button-outline-active-background-color,
+      var(
+        --ds-theme-background-base-color,
+        ${s(Nt.outlineActiveBackgroundColor)}
+      )
+    );
+    background-image: var(
+      --ds-button-outline-active-background-image,
+      ${s(Nt.outlineActiveBackgroundImage)}
+    );
+  }
+
+  /* ------- Button faint -------- */
+
+  :host([appearance^='${s(Ht)}']) a,
+  :host([appearance^='${s(Ht)}']) button {
+    background-color: var(
+      --ds-button-faint-background-color,
+      var(--ds-color-transparent, ${s(Nt.faintBackgroundColor)})
+    );
+    background-image: var(
+      --ds-button-faint-background-image,
+      ${s(Nt.faintBackgroundImage)}
+    );
+    color: var(
+      --ds-button-faint-color,
+      var(
+        --ds-theme-foreground-accent-subtle-normal,
+        ${s(Nt.faintColor)}
+      )
+    );
+    border-color: var(
+      --ds-button-faint-border-color,
+      var(--ds-color-transparent, ${s(Nt.faintBorderColor)})
+    );
+  }
+
+  :host([appearance^='${s(Ht)}']:not([disabled])) a:hover,
+  :host([appearance^='${s(Ht)}']:not([disabled])) button:hover,
+  :host([appearance^='${s(Ht)}']:not([disabled])) a:focus,
+  :host([appearance^='${s(Ht)}']:not([disabled])) button:focus {
+    border-color: var(
+      --ds-button-faint-hover-border-color,
+      var(--ds-color-transparent, ${s(Nt.faintHoverBorderColor)})
+    );
+    background-color: var(
+      --ds-button-faint-hover-background-color,
+      var(--ds-color-transparent, ${s(Nt.faintHoverBackgroundColor)})
+    );
+    background-image: var(
+      --ds-button-faint-hover-background-image,
+      ${s(Nt.faintHoverBackgroundImage)}
+    );
+    color: var(
+      --ds-button-faint-hover-color,
+      var(
+        --ds-theme-foreground-accent-subtle-normal,
+        ${s(Nt.faintHoverColor)}
+      )
+    );
+  }
+
+  /* ------- Button faint active -------- */
+
+  :host([appearance^='${s(Ht)}'][active]) button,
+  :host([appearance^='${s(Ht)}'][active]) button:focus,
+  :host([appearance^='${s(Ht)}'][active]) button:hover {
+    color: var(
+      --ds-button-faint-active-color,
+      var(
+        --ds-theme-foreground-accent-strong-normal,
+        ${s(Nt.faintActiveColor)}
+      )
+    );
+    border-color: var(
+      --ds-button-faint-active-border-color,
+      var(--ds-color-transparent, ${s(Nt.faintActiveBorderColor)})
+    );
+    background-color: var(
+      --ds-button-faint-active-background-color,
+      var(
+        --ds-theme-background-base-color,
+        ${s(Nt.faintActiveBackgroundColor)}
+      )
+    );
+    background-image: var(
+      --ds-button-faint-active-background-image,
+      ${s(Nt.faintActiveBackgroundImage)}
+    );
+  }
+
+  /* ------- Button link -------- */
+
+  :host([appearance^='${s(Ut)}']) button,
+  :host([appearance^='${s(Ut)}']:not([disabled])) button:hover,
+  :host([appearance^='${s(Ut)}']:not([disabled])) button:focus {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    color: var(
+      --ds-button-link-color,
+      var(--ds-theme-foreground-accent-subtle-normal, ${s(Nt.linkColor)})
+    );
+    text-decoration: underline;
+    box-shadow: none;
+  }
+
+  :host([appearance^='${s(Ut)}'][inactive]) button,
+  :host([appearance^='${s(Ut)}'][inactive]:not([disabled]))
+    button:hover,
+  :host([appearance^='${s(Ut)}'][inactive]:not([disabled]))
+    button:focus {
+    opacity: 1;
+    text-decoration: none;
+    color: var(
+      --ds-button-link-inactive-color,
+      var(--ds-color-gray-500, ${s(Nt.linkInactiveColor)})
+    );
+    cursor: default;
+  }
+`,Vt=new Set,Wt=new MutationObserver((function(){Ft=document.documentElement.dir||"ltr",qt=document.documentElement.lang||navigator.language,[...Vt.keys()].forEach((t=>{"function"==typeof t.requestUpdate&&t.requestUpdate()}))}));let Ft=document.documentElement.dir||"ltr",qt=document.documentElement.lang||navigator.language;Wt.observe(document.documentElement,{attributes:!0,attributeFilter:["dir","lang"]});class Xt{constructor(t){this._host=t,this._host.addController(this)}hostConnected(){Vt.add(this._host)}hostDisconnected(){Vt.delete(this._host)}dir(){return`${this._host.dir||Ft}`.toLowerCase()}lang(){return`${this._host.lang||qt}`.toLowerCase()}}const Jt="medium",Kt=t=>t??V;var Gt=Object.defineProperty,Qt=Object.getOwnPropertyDescriptor,Yt=(t,e,o,n)=>{for(var r,s=n>1?void 0:n?Qt(e,o):e,i=t.length-1;i>=0;i--)(r=t[i])&&(s=(n?r(e,o,s):r(s))||s);return n&&s&&Gt(e,o,s),s};const te=t=>{class e extends t{constructor(){super(...arguments),this.ariaDisabled=null,this.ariaExpanded=null}renderAnchor(t,e,o="base"){const n={...e};return j`
+        <a
+          aria-disabled="${Kt(this.ariaDisabled)}"
+          aria-expanded="${Kt(this.ariaExpanded)}"
+          class=${mt(n)}
+          download="${Kt(this.download)}"
+          href=${Kt(this.href)}
+          hreflang="${Kt(this.hreflang)}"
+          part=${o}
+          ping="${Kt(this.ping)}"
+          referrerpolicy="${Kt(this.referrerpolicy)}"
+          rel="${Kt(this.rel)}"
+          target="${Kt(this.target)}"
+          type="${Kt(this.type)}"
+        >
+          ${t}
+        </a>
+      `}}return Yt([ct({attribute:"aria-disabled"})],e.prototype,"ariaDisabled",2),Yt([ct({attribute:"aria-expanded"})],e.prototype,"ariaExpanded",2),Yt([ct()],e.prototype,"download",2),Yt([ct()],e.prototype,"href",2),Yt([ct()],e.prototype,"hreflang",2),Yt([ct()],e.prototype,"ping",2),Yt([ct()],e.prototype,"referrerpolicy",2),Yt([ct()],e.prototype,"rel",2),Yt([ct()],e.prototype,"target",2),Yt([ct()],e.prototype,"type",2),e},ee=t=>i`
+    ${s(`transition: ${t};`)}
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  `,oe=(i`
+  ${ee("var(--ds-transition-fade, opacity 0.15s linear)")}
+`,"0"),ne=zt,re=i`
+  :host([appearance^='${s(It)}']) a,
+  :host([appearance^='${s(It)}']) button {
+    border: none;
+    padding-block: var(
+      --ds-action-trigger-padding-block,
+      ${s(oe)}
+    );
+    padding-inline: var(
+      --ds-action-trigger-padding-inline,
+      ${s("0")}
+    );
+    background: transparent;
+    gap: var(--ds-action-trigger-gap, ${s("0.4375em")});
+    font-weight: var(
+      --ds-action-trigger-font-weight,
+      ${s("600")}
+    );
+    font-size: var(
+      --ds-action-trigger-font-size,
+      ${s("1rem")}
+    );
+    color: var(
+      --ds-action-trigger-color,
+      var(
+        --ds-theme-foreground-accent-subtle-normal,
+        ${s(ne)}
+      )
+    );
+    text-decoration: underline;
+  }
+
+  :host([appearance^='${s(It)}']) a:focus,
+  :host([appearance^='${s(It)}']) button:focus {
+    ${kt}
+  }
+
+  /* TODO: disabled and inactive styles for button only, they should not apply to anchors */
+
+  :host([appearance^='${s(It)}'])
+    a.action-trigger--no-underline,
+  :host([appearance^='${s(It)}'])
+    button.action-trigger--no-underline {
+    text-decoration: none;
+  }
+
+  :host([appearance^='${s(It)}'][disabled]) button {
+    opacity: var(
+      --ds-action-trigger-disabled-opacity,
+      ${s("0.3")}
+    );
+    background-image: none;
+    box-shadow: none;
+  }
+
+  :host([appearance='${s(It)}'].inactive) button {
+    color: var(
+      --ds-action-trigger-inactive-color,
+      ${s("#757575")}
+    );
+    text-decoration: none;
+  }
+`,se="1em",ie="0.8125em",ae="1em",le="1.25em",de="1.5em",ce=i`
+  :host {
+    display: inline-block;
+    width: var(--ds-icon-size-default, ${s(se)});
+    min-width: var(--ds-icon-size-default, ${s(se)});
+    height: var(--ds-icon-size-default, ${s(se)});
+    min-height: var(--ds-icon-size-default, ${s(se)});
+    box-sizing: content-box;
+  }
+
+  :host([size='xsmall']) {
+    width: var(--ds-icon-size-xsmall, ${s(ie)});
+    min-width: var(--ds-icon-size-xsmall, ${s(ie)});
+    height: var(--ds-icon-size-xsmall, ${s(ie)});
+    min-height: var(--ds-icon-size-xsmall, ${s(ie)});
+  }
+
+  :host([size='small']) {
+    width: var(--ds-icon-size-small, ${s(ae)});
+    min-width: var(--ds-icon-size-small, ${s(ae)});
+    height: var(--ds-icon-size-small, ${s(ae)});
+    min-height: var(--ds-icon-size-small, ${s(ae)});
+  }
+
+  :host([size='medium']) {
+    width: var(--ds-icon-size-medium, ${s(le)});
+    min-width: var(--ds-icon-size-medium, ${s(le)});
+    height: var(--ds-icon-size-medium, ${s(le)});
+    min-height: var(--ds-icon-size-medium, ${s(le)});
+  }
+
+  :host([size='large']) {
+    width: var(--ds-icon-size-large, ${s(de)});
+    min-width: var(--ds-icon-size-large, ${s(de)});
+    height: var(--ds-icon-size-large, ${s(de)});
+    min-height: var(--ds-icon-size-large, ${s(de)});
+  }
+
+  svg,
+  ::slotted(svg) {
+    display: block;
+    height: 100%;
+    width: 100%;
+    fill: currentColor;
+  }
+`,he=Object.assign({"../../../../../../node_modules/@fluentui/svg-icons/icons/add_circle_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 5c-.38 0-.7.28-.74.65l-.01.1v3.5h-3.5a.75.75 0 0 0-.1 1.5h3.6v3.5a.75.75 0 0 0 1.5.1v-3.6h3.5a.75.75 0 0 0 .1-1.5h-3.6v-3.5A.75.75 0 0 0 12 7Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/add_circle_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM12 7c.41 0 .75.34.75.75v3.5h3.5a.75.75 0 0 1 0 1.5h-3.5v3.5a.75.75 0 0 1-1.5 0v-3.5h-3.5a.75.75 0 0 1 0-1.5h3.5v-3.5c0-.41.34-.75.75-.75Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/arrow_up_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.28 10.3a1 1 0 0 0 1.43 1.4L11 6.33V20a1 1 0 1 0 2 0V6.33l5.28 5.37a1 1 0 0 0 1.43-1.4l-6.82-6.93c-.5-.5-1.3-.5-1.78 0L4.28 10.3Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/arrow_up_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 10.73a.75.75 0 0 0 1.1 1.04l5.95-6.25v14.73a.75.75 0 0 0 1.5 0V5.52l5.95 6.25a.75.75 0 0 0 1.1-1.04l-7.08-7.42a1 1 0 0 0-1.44 0L4.2 10.73Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/checkmark_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 16.59-3.8-3.8a1 1 0 0 0-1.4 1.42l4.5 4.5a1 1 0 0 0 1.4 0l11-11a1 1 0 0 0-1.4-1.42L8.5 16.6Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/checkmark_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.53 12.97a.75.75 0 0 0-1.06 1.06l4.5 4.5c.3.3.77.3 1.06 0l11-11a.75.75 0 0 0-1.06-1.06L8.5 16.94l-3.97-3.97Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_down_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.3 8.3a1 1 0 0 1 1.4 0l6.3 6.29 6.3-6.3a1 1 0 1 1 1.4 1.42l-7 7a1 1 0 0 1-1.4 0l-7-7a1 1 0 0 1 0-1.42Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_down_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.22 8.47c.3-.3.77-.3 1.06 0L12 15.19l6.72-6.72a.75.75 0 1 1 1.06 1.06l-7.25 7.25c-.3.3-.77.3-1.06 0L4.22 9.53a.75.75 0 0 1 0-1.06Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_left_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.7 4.3a1 1 0 0 1 0 1.4L9.42 12l6.3 6.3a1 1 0 0 1-1.42 1.4l-7-7a1 1 0 0 1 0-1.4l7-7a1 1 0 0 1 1.42 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_left_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.53 4.22c.3.3.3.77 0 1.06L8.81 12l6.72 6.72a.75.75 0 1 1-1.06 1.06l-7.25-7.25a.75.75 0 0 1 0-1.06l7.25-7.25c.3-.3.77-.3 1.06 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_right_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.3 4.3a1 1 0 0 0 0 1.4l6.29 6.3-6.3 6.3a1 1 0 1 0 1.42 1.4l7-7a1 1 0 0 0 0-1.4l-7-7a1 1 0 0 0-1.42 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_right_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.47 4.22c-.3.3-.3.77 0 1.06L15.19 12l-6.72 6.72a.75.75 0 1 0 1.06 1.06l7.25-7.25c.3-.3.3-.77 0-1.06L9.53 4.22a.75.75 0 0 0-1.06 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_up_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.3 15.7a1 1 0 0 0 1.4 0L12 9.42l6.3 6.3a1 1 0 0 0 1.4-1.42l-7-7a1 1 0 0 0-1.4 0l-7 7a1 1 0 0 0 0 1.42Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/chevron_up_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.22 15.53c.3.3.77.3 1.06 0L12 8.81l6.72 6.72a.75.75 0 1 0 1.06-1.06l-7.25-7.25a.75.75 0 0 0-1.06 0l-7.25 7.25c-.3.3-.3.77 0 1.06Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/circle_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/circle_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17ZM2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/dismiss_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m4.21 4.39.08-.1a1 1 0 0 1 1.32-.08l.1.08L12 10.6l6.3-6.3a1 1 0 1 1 1.4 1.42L13.42 12l6.3 6.3a1 1 0 0 1 .08 1.31l-.08.1a1 1 0 0 1-1.32.08l-.1-.08L12 13.4l-6.3 6.3a1 1 0 0 1-1.4-1.42L10.58 12l-6.3-6.3a1 1 0 0 1-.08-1.31l.08-.1-.08.1Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/dismiss_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m4.4 4.55.07-.08a.75.75 0 0 1 .98-.07l.08.07L12 10.94l6.47-6.47a.75.75 0 1 1 1.06 1.06L13.06 12l6.47 6.47c.27.27.3.68.07.98l-.07.08a.75.75 0 0 1-.98.07l-.08-.07L12 13.06l-6.47 6.47a.75.75 0 0 1-1.06-1.06L10.94 12 4.47 5.53a.75.75 0 0 1-.07-.98l.07-.08-.07.08Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/pause_circle_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.5 6.25v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 1.5 0Zm4.5 0v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 1.5 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/pause_circle_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 8.25a.75.75 0 0 0-1.5 0v7.5a.75.75 0 0 0 1.5 0v-7.5Zm4.5 0a.75.75 0 0 0-1.5 0v7.5a.75.75 0 0 0 1.5 0v-7.5ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM3.5 12a8.5 8.5 0 1 1 17 0 8.5 8.5 0 0 1-17 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/play_circle_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm8.86-3.85A1.25 1.25 0 0 0 9 9.25v5.5c0 .95 1.02 1.56 1.86 1.1l5.75-3.2a.75.75 0 0 0 0-1.3l-5.75-3.2Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/play_circle_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.86 8.15A1.25 1.25 0 0 0 9 9.25v5.5c0 .95 1.02 1.56 1.86 1.1l5.75-3.2a.75.75 0 0 0 0-1.3l-5.75-3.2ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM3.5 12a8.5 8.5 0 1 1 17 0 8.5 8.5 0 0 1-17 0Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/search_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Zm5-7a7 7 0 1 0 4.2 12.6l5.1 5.1a1 1 0 0 0 1.4-1.4l-5.1-5.1A7 7 0 0 0 10 3Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/search_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 10a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0ZM10 3a7 7 0 1 0 4.4 12.45l5.32 5.33a.75.75 0 1 0 1.06-1.06l-5.33-5.33A7 7 0 0 0 10 3Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/star_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.79 3.1c.5-1 1.92-1 2.42 0l2.36 4.78 5.27.77c1.1.16 1.55 1.52.75 2.3l-3.82 3.72.9 5.25a1.35 1.35 0 0 1-1.96 1.42L12 18.86l-4.72 2.48a1.35 1.35 0 0 1-1.96-1.42l.9-5.25-3.81-3.72c-.8-.78-.36-2.14.75-2.3l5.27-.77 2.36-4.78Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/star_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.79 3.1c.5-1 1.92-1 2.42 0l2.36 4.78 5.27.77c1.1.16 1.55 1.52.75 2.3l-3.82 3.72.9 5.25a1.35 1.35 0 0 1-1.96 1.42L12 18.86l-4.72 2.48a1.35 1.35 0 0 1-1.96-1.42l.9-5.25-3.81-3.72c-.8-.78-.36-2.14.75-2.3l5.27-.77 2.36-4.78Zm1.2.94L9.75 8.6c-.2.4-.58.68-1.02.74l-5.05.74 3.66 3.56c.32.3.46.76.39 1.2l-.87 5.02 4.52-2.37c.4-.2.86-.2 1.26 0l4.51 2.37-.86-5.03c-.07-.43.07-.88.39-1.2l3.65-3.55-5.05-.74a1.35 1.35 0 0 1-1.01-.74L12 4.04Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/subtract_circle_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-4.25 9.25a.75.75 0 0 0-.1 1.5h8.6a.75.75 0 0 0 .1-1.5h-8.6Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/subtract_circle_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm4.25 7.75a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5h8.5Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/warning_24_filled.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.03 3.66a2.25 2.25 0 0 1 3.94 0l7.74 14A2.25 2.25 0 0 1 19.74 21H4.25a2.25 2.25 0 0 1-1.97-3.34l7.75-14ZM13 17a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-.26-7.85a.75.75 0 0 0-1.5.1v4.5l.02.1a.75.75 0 0 0 1.49-.1v-4.5l-.01-.1Z"/></svg>',"../../../../../../node_modules/@fluentui/svg-icons/icons/warning_24_regular.svg":'<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 17a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-.26-7.85a.75.75 0 0 0-1.5.1l.01 4.5v.1a.75.75 0 0 0 1.5-.1v-4.5l-.01-.1Zm1.23-5.5a2.25 2.25 0 0 0-3.94 0L2.3 17.67A2.25 2.25 0 0 0 4.26 21h15.49c1.71 0 2.8-1.84 1.96-3.34l-7.74-14Zm-2.63.74a.75.75 0 0 1 1.32 0l7.74 14a.75.75 0 0 1-.65 1.11H4.25a.75.75 0 0 1-.65-1.11l7.74-14Z"/></svg>'}),ue=Object.keys(he);var ge=Object.defineProperty,ve=Object.getOwnPropertyDescriptor,pe=(t,e,o,n)=>{for(var r,s=n>1?void 0:n?ve(e,o):e,i=t.length-1;i>=0;i--)(r=t[i])&&(s=(n?r(e,o,s):r(s))||s);return n&&s&&ge(e,o,s),s};let me=class extends rt{constructor(){super(...arguments),this.filled=!1,this.ariaLabel=null}updated(t){t.has("ariaLabel")&&this._setAriaAttrs(),t.has("icon")&&this.setIcon()}setIcon(){var t;if(this._slotContents&&0===this._slotContents.length&&this.icon){const e=(({name:t="",filled:e})=>{const o=`../../../../../../node_modules/@fluentui/svg-icons/icons/${t.replace("-","_").toLowerCase()}_24_${e?"filled":"regular"}.svg`;return((t="")=>ue.includes(t))(o)?he[o]:""})({name:this.icon,filled:this.filled}),o=e&&(new DOMParser).parseFromString(e,"text/html"),n=o&&o.body.querySelector("svg");n&&(this.removeIcon(),null==(t=this.shadowRoot)||t.append(n))}}removeIcon(){var t;const e=null==(t=this.shadowRoot)?void 0:t.querySelector("svg");null==e||e.remove()}_setAriaAttrs(){this.ariaLabel?(this.setAttribute("role","img"),this.removeAttribute("aria-hidden")):(this.setAttribute("aria-hidden","true"),this.removeAttribute("role"))}render(){return j` <slot></slot> `}};me.styles=[ce],pe([ct()],me.prototype,"icon",2),pe([ct()],me.prototype,"size",2),pe([ct({type:Boolean})],me.prototype,"filled",2),pe([ct({attribute:"aria-label"})],me.prototype,"ariaLabel",2),pe([gt()],me.prototype,"_slotContents",2),me=pe([at("moray-icon")],me);const $e="cta",be="cta--reverse",fe=zt,_e="0.25em",we=i`
+  /* Basic links */
+  a {
+    ${jt}
+    gap: var(--ds-anchor-gap, ${s("0.375rem")});
+    color: var(
+      --ds-anchor-color,
+      var(--ds-theme-foreground-accent-subtle-normal, ${s(fe)})
+    );
+  }
+
+  a[href]:focus {
+    ${yt}
+    outline-offset: 1px; /* Webkit browser default */
+  }
+
+  .first,
+  .last {
+    display: inline-flex;
+  }
+
+  /* CTA and CTA reverse */
+  :host([appearance^='${s($e)}']) a {
+    text-decoration: none;
+    font-weight: var(--ds-cta-font-weight, ${s("600")});
+  }
+
+  :host([appearance='${s($e)}']) moray-icon:not(.rtl),
+  :host([appearance='${s(be)}']) moray-icon.rtl {
+    transform: translateX(
+      calc(var(--ds-cta-translate-x, ${s(_e)}) * -1)
+    );
+  }
+
+  :host([appearance='${s($e)}']) moray-icon.rtl,
+  :host([appearance='${s(be)}']) moray-icon:not(.rtl) {
+    transform: translateX(var(--ds-cta-translate-x, ${s(_e)}));
+  }
+
+  :host([appearance^='${s($e)}']) a:hover,
+  :host([appearance^='${s($e)}']) a:focus {
+    text-decoration: underline;
+  }
+
+  :host([appearance^='${s($e)}']) a:hover moray-icon,
+  :host([appearance^='${s($e)}']) a:focus moray-icon {
+    transform: translateX(0);
+
+    ${ee(`var(--ds-cta-transition, ${s("transform 0.6s cubic-bezier(0.19, 1, 0.22, 1)")})`)}
+  }
+
+  /* Action trigger */
+
+  ${re}
+
+  /* Button */
+
+  ${Dt}
+`;var ye=Object.defineProperty,Ae=Object.getOwnPropertyDescriptor,ke=(t,e,o,n)=>{for(var r,s=n>1?void 0:n?Ae(e,o):e,i=t.length-1;i>=0;i--)(r=t[i])&&(s=(n?r(e,o,s):r(s))||s);return n&&s&&ye(e,o,s),s};let xe=class extends(te(rt)){constructor(){super(...arguments),this.localize=new Xt(this),this.block=!1,this.pill=!1,this._firstSlotEmpty=!0,this._lastSlotEmpty=!0,this._slottedImgIcon=!1}_handleSlotChange(){this._firstSlotEmpty=0===this._firstSlot.length,this._lastSlotEmpty=0===this._lastSlot.length,this._slottedImgIcon=this._checkSlotsForImgIcon()}_checkSlotsForImgIcon(){return[...this._defaultSlot,...this._firstSlot,...this._lastSlot].some((t=>"img"===t.nodeName.toLowerCase()||"moray-icon"===t.nodeName.toLowerCase()))}render(){const t="rtl"===this.localize.dir(),e={rtl:t};let o=j``,n=j``;this.appearance===$e?n=j`
+        <moray-icon
+          icon="chevron-${t?"left":"right"}"
+          size=${Jt}
+          class=${mt(e)}
+        ></moray-icon>
+      `:this.appearance===be&&(o=j`
+        <moray-icon
+          icon="chevron-${t?"right":"left"}"
+          size=${Jt}
+          class=${mt(e)}
+        ></moray-icon>
+      `);const r={"action-trigger--no-underline":this.appearance===It&&this._slottedImgIcon};return this.renderAnchor(j`
+        <span
+          part="first"
+          class="first"
+          style="${this._firstSlotEmpty?"display: none":V}"
+        >
+          <slot name="first" @slotchange=${this._handleSlotChange}></slot>
+        </span>
+        ${o}
+        <slot @slotchange=${this._handleSlotChange}></slot>
+        ${n}
+        <span part="last" class="last" style="${this._lastSlotEmpty?"display: none":V}">
+          <slot name="last" @slotchange=${this._handleSlotChange}></slot>
+        </span>
+      `,r)}};xe.styles=we,ke([ct({reflect:!0})],xe.prototype,"appearance",2),ke([ct({type:Boolean,reflect:!0})],xe.prototype,"block",2),ke([ct({type:Boolean,reflect:!0})],xe.prototype,"pill",2),ke([ct({reflect:!0})],xe.prototype,"size",2),ke([gt()],xe.prototype,"_defaultSlot",2),ke([vt({slot:"first"})],xe.prototype,"_firstSlot",2),ke([vt({slot:"last"})],xe.prototype,"_lastSlot",2),ke([ht()],xe.prototype,"_firstSlotEmpty",2),ke([ht()],xe.prototype,"_lastSlotEmpty",2),ke([ht()],xe.prototype,"_slottedImgIcon",2),xe=ke([at("moray-anchor")],xe)})();

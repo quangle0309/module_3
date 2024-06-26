@@ -1,0 +1,50 @@
+.MLSD .border-radius-8px{border-radius:8px}
+.MLSD .border-radius-4px{border-radius:4px}
+.MLSD .border-radius-img img{border-radius:8px}
+.MLSD .mlsd-articles-2col-r.col-md-4 .content-card .row.row-cols-1.row-cols-md-2 .col{flex:0 0 100%;max-width:100%;padding-bottom:3rem}
+.MLSD .cards-without-image .card-group>.card{padding:7rem 2em}
+.MLSD .container .sticky-tabs .container{width:100%;padding:0}
+.MLSD .col-md-8 .richtext ol li,.MLSD .col-md-8 .richtext ul li{padding-bottom:10px}
+#uhf-footer.c-uhff{margin-top:0}
+.MLSD .mlsd-compare-chart .compare-chart{overflow-x:hidden !important}
+.font-w-normal{font-weight:normal !important}
+.font-w-600{font-weight:600 !important}
+.font-w-900{font-weight:900 !important}
+.color-light-for-mobile .card-body,.color-light-for-mobile .card-body a{color:#fff !important}
+.color-dark-for-mobile .card-body,.color-dark-for-mobile .card-body a{color:#000 !important}
+.color-grey-for-mobile .card-body,.color-grey-for-mobile .card-body a{color:#808080 !important}
+@media(min-width:1084px){.MLSD .mlsd-column-count-2{width:50% !important;padding-right:36px;column-count:1;float:left;clear:none}
+.MLSD .mlsd-column-count-3{width:33% !important;padding-right:36px;column-count:1;float:left;clear:none}
+.MLSD .mlsd-column-count-4{width:25% !important;padding-right:36px;column-count:1;float:left;clear:none}
+}
+@media(min-width:540px) and (max-width:1083.98px){.MLSD .cards-without-image .card-group>.card{padding:7rem 0}
+}
+@media screen and (min-width:860px){body .mlsd-hide-in-higher-vp{display:none !important}
+body .mlsd-show-in-higher-vp{display:block !important}
+header #c-uhf-nav-cta>a.blue-cta{background-color:#0067b8 !important;color:#fff !important;padding-top:5px !important;padding-bottom:5px !important}
+header #c-uhf-nav-cta>a{visibility:hidden}
+}
+@media screen and (max-width:859.99px){body .mlsd-hide-in-lower-vp{display:none !important}
+body .mlsd-show-in-lower-vp{display:block !important}
+}
+header .theme-dark .cat-logo-button-cont{background:#000 !important}
+header .theme-dark .cat-logo-button-cont #uhfCatLogoButton{color:#fff}
+.data{margin-top:-301px;margin-left:25px}
+.hui_modal_css{position:fixed;z-index:1;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4)}
+.hui_modal_content_css{position:relative;top:50%;background-color:#fff;margin:0 auto;padding:0;height:auto;max-width:38.5714285714rem;box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);-webkit-animation-name:animatetop;-webkit-animation-duration:.4s;animation-name:animatetop;animation-duration:.4s;-ms-transform:translateY(-50%);-webkit-transform:translateY(-50%);transform:translateY(-50%);overflow:hidden;overflow-y:auto}
+.hui_modal_header_css{display:block;border-bottom:0;padding:2.4rem 2rem 1rem}
+.hui_modal_close_css{position:absolute;top:0;right:0;background:0;border:0;padding:.8rem;font-size:1.5rem;cursor:pointer;transition:all .2s ease-in-out}
+.hui_modal_body_css{padding:2px 16px}
+.hui_retailers_list_css{margin:0 0 20px;padding:0;list-style:none;border-top:1px solid #d8d8d8}
+.hui_retailers_list_css li{list-style-type:none}
+.hui_retailers_list_a_css{display:flex;border-bottom:1px solid #d8d8d8;padding:.5rem .5rem .5rem 1.2rem;justify-content:space-between;align-items:center;text-decoration:none;color:#000}
+.hui_retailers_list_a_css:hover{background-color:#eee}
+.retailer-logo_css{height:2.5714285714rem;display:flex;align-items:center}
+.retailer-image_css{max-height:100%;max-width:100px}
+.retailer-available_css{margin:0 1.5rem 0 3rem;font-size:1rem;text-align:left;min-width:90px}
+.retailer-price_css{margin:0 3rem 0 1.5rem;font-size:1rem;text-align:left}
+.modal-footer-first-div_css{display:flex;align-items:center;justify-content:center;width:100%}
+.modal-footer-second-div_css{line-height:22px;color:#b4b4b4;font-size:10px;position:relative;border-radius:0 0 3px 3px;width:fit-content}
+._j41xxg8kp3_css{color:#000;font-size:10px;margin:0;display:inline;text-decoration:unset}
+.modal-footer-span_css{margin-right:2px;color:#000}
+.modal-footer-image_css{width:50px;border:0;vertical-align:middle;display:inline}

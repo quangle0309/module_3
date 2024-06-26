@@ -1,0 +1,8 @@
+.link-list ul{padding:40px 0 16px}
+.link-list img{padding-bottom:4px}
+@media(max-width:1083.99px){.link-list ul{padding:24px 12px 0}
+.link-list li{padding-bottom:24px}
+.link-list img{width:24px;height:auto}
+}
+@media(max-width:539.99px){.link-list ul.d-flex{display:block !important}
+}

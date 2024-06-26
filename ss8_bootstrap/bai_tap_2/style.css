@@ -1,0 +1,106 @@
+.navbar {
+    height: 56px !important;
+    background-color: white !important;
+}
+
+.navbar-brand img {
+    width: 100px;
+
+}
+
+.nav-item {
+    font-size: 14px;
+}
+
+.text-color-blue {
+    color: #0736c3;
+}
+
+.surface {
+    font-size: 16px;
+
+    border-width: 2px !important;
+    border-color: black !important;
+}
+
+.form-animation-btn {
+    height: 42px;
+    background-color: #e6e6e6;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: 22px;
+}
+
+.form-animation-btn p {
+    margin:0 20px 2px 20px;
+}
+
+.animation-btn {
+    margin-right: 8%;
+}
+
+.text-content h1{
+    padding-bottom: 10px;
+    font-size: 70px;
+    background-image: linear-gradient(90deg, rgb(56, 48, 255) 0%, rgb(12, 0, 255) 26%, rgb(0, 0, 0) 41%, rgb(163, 106, 0) 61%, rgb(224, 146, 0) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+}
+
+.button-content {
+    text-align: center;
+    margin-top: 42px;
+}
+
+.button-content a {
+    color: white;
+    background-color: #0736c3;
+}
+
+.button-content a:hover {
+    color: white;
+    background-color: #002f9b;
+}
+
+.video-content {
+    margin-top: 30px;
+}
+
+#flexSwitchCheckDefault:checked ~ label:after {
+    content: "on";
+}
+
+#flexSwitchCheckDefault ~ label:after {
+    content: "off";
+}
+
+.img-content img {
+    width: 40px;
+}
+
+.arrow-icon i{
+    color: #0736c3;
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+.select-content-link a{
+    color: #0736c3;
+    text-decoration: none;
+}
+
+.select-content-link a:hover{
+    text-decoration: underline;
+}
+
+.select-content-link a:hover ~ .arrow-icon i{
+    transform: translateX(75%)
+}
+
+.sub-title-content h1 {
+    font-size: 70px;
+    color: #0e1726;
+    margin-top: 100px;
+}
