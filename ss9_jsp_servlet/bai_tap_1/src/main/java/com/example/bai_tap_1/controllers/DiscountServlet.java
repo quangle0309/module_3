@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet (name = "DiscountServlet", urlPatterns = "/display-discount")
 public class DiscountServlet extends HttpServlet {
-    DiscountService discountService = new DiscountService();
+    private DiscountService discountService = new DiscountService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
