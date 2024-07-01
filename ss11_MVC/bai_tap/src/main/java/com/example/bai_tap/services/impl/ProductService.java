@@ -8,9 +8,34 @@ import com.example.bai_tap.services.IProductService;
 import java.util.List;
 
 public class ProductService implements IProductService {
-    private IProductRepository productService = new ProductRepository();
+    private IProductRepository productRepository= new ProductRepository();
     @Override
     public List<Product> findAll() {
-        return productService.findAll();
+        return productRepository.findAll();
+    }
+
+    @Override
+    public void add(Product product) {
+        productRepository.save(product);
+    }
+
+    @Override
+    public boolean removeById(int id) {
+        return productRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Product> searchByName(String name) {
+        return productRepository.searchByName(name);
+    }
+
+    @Override
+    public boolean updateProduct(int id, String name, String description, String manufacturer) {
+        return productRepository.updateProduct(id, name, description, manufacturer);
+    }
+
+    @Override
+    public Product findById(int id) {
+        return productRepository.findById(id);
     }
 }

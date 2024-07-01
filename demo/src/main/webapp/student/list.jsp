@@ -32,7 +32,8 @@
     </div>
 </nav>
 <div class="container">
-    <button class="btn btn-primary mt-4">Thêm</button>
+    <p style="color: blue">${message}</p>
+    <button class="btn btn-primary mt-4" onclick="window.location.href='/student?action=create'">Thêm</button>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -84,7 +85,11 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <button type="button" class="btn btn-primary">Xác nhận</button>
+                                    <form action="/student?action=delete" method="post">
+                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                        <input type="hidden" name="id" value="${student.id}">
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

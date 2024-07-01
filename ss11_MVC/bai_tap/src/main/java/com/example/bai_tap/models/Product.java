@@ -13,6 +13,12 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
+    public Product (String name, String description, String manufacturer) {
+        this.name = name;
+        this.description = description;
+        this.manufacturer = manufacturer;
+    }
+
     public int getId() {
         return id;
     }

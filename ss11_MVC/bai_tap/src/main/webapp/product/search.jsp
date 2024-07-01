@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 7/1/2024
-  Time: 9:02 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -17,8 +10,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,10 +22,8 @@
                     <a class="nav-link" href="#">Danh Sách Sản Phẩm</a>
                 </li>
             </ul>
-            <form class="d-flex my-auto" role="search" action="/product" method="get">
-                <input class="form-control me-2" type="search" placeholder="Input name..." aria-label="Search"
-                       name="keyword">
-                <input type="hidden" name="action" value="search">
+            <form class="d-flex my-auto" role="search">
+                <input class="form-control me-2" type="search" placeholder="Input name..." aria-label="Search" name="keyword">
                 <button class="btn btn-outline-primary w-50" type="submit">Tìm Kiếm</button>
             </form>
         </div>
@@ -44,7 +34,7 @@
     <table class="table table-hover m-75 mx-auto text-center">
         <thead>
         <tr>
-            <th colspan="5" class="text-center"><h1>Danh Sách Sản Phẩm</h1></th>
+            <th colspan="5" class="text-center"><h1>Danh Sách Tìm Kiếm</h1></th>
         </tr>
         <tr class="align-baseline">
             <th>ID</th>
@@ -59,7 +49,7 @@
         </tr>
         </thead>
         <tbody class="align-baseline">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="product" items="${searchProducts}">
             <tr>
                 <td>${product.id}</td>
                 <td>${product.name}</td>
@@ -71,8 +61,7 @@
                         <input type="hidden" name="id" value="${product.id}">
                         <button type="submit" class="btn btn-secondary">Chỉnh Sửa</button>
                     </form>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#modalDelete${product.id}">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete${product.id}">
                         Xóa
                     </button>
                     <div class="modal fade" tabindex="-1" id="modalDelete${product.id}">
@@ -80,16 +69,13 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Xóa Sản Phẩm</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <p class="m-auto">Bạn có chắc chắn muốn xóa sản phẩm này!!!</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                            name="cancel">Hủy
-                                    </button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" name="cancel">Hủy</button>
                                     <form action="/product?action=delete" method="post">
                                         <button type="submit" class="btn btn-primary">Xác nhận</button>
                                         <input type="hidden" name="id" value="${product.id}">

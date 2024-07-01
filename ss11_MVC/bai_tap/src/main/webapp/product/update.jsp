@@ -15,8 +15,13 @@
 </head>
 <body>
 <div class="container">
-    <form class="w-50 mx-auto mt-5" method="post">
-        <h1 class="text-center my-5">Thêm Mới Sản Phẩm</h1>
+    <form class="w-50 mx-auto mt-5" action="/product" method="post">
+        <input type="hidden" name="action" value="update">
+        <h1 class="text-center my-5">Chỉnh Sửa Sản Phẩm</h1>
+        <div class="mb-3">
+            <label for="id" class="form-label">ID sản phẩm</label>
+            <input type="text" class="form-control" id="id" name="id" value="${idUpdate}" readonly>
+        </div>
         <div class="mb-3">
             <label for="name" class="form-label">Tên Sản Phẩm</label>
             <input type="text" class="form-control" id="name" name="name" required>
