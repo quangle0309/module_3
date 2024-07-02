@@ -19,7 +19,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Trang Chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Danh Sách Sản Phẩm</a>
+                    <a class="nav-link" href="/product">Danh Sách Sản Phẩm</a>
                 </li>
             </ul>
             <form class="d-flex my-auto" role="search">
@@ -59,9 +59,12 @@
                     <form class="d-inline" action="/product" method="get">
                         <input type="hidden" name="action" value="update">
                         <input type="hidden" name="id" value="${product.id}">
-                        <button type="submit" class="btn btn-secondary">Chỉnh Sửa</button>
+                        <input type="hidden" name="name" value="${product.name}">
+                        <input type="hidden" name="description" value="${product.description}">
+                        <input type="hidden" name="manufacturer" value="${product.manufacturer}">
+                        <button type="submit" class="btn btn-outline-warning">Chỉnh Sửa</button>
                     </form>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete${product.id}">
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete${product.id}">
                         Xóa
                     </button>
                     <div class="modal fade" tabindex="-1" id="modalDelete${product.id}">
@@ -77,7 +80,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" name="cancel">Hủy</button>
                                     <form action="/product?action=delete" method="post">
-                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                        <button type="submit" class="btn btn-danger">Xác nhận</button>
                                         <input type="hidden" name="id" value="${product.id}">
                                     </form>
                                 </div>

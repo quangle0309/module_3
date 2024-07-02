@@ -20,19 +20,19 @@
         <h1 class="text-center my-5">Chỉnh Sửa Sản Phẩm</h1>
         <div class="mb-3">
             <label for="id" class="form-label">ID sản phẩm</label>
-            <input type="text" class="form-control" id="id" name="id" value="${idUpdate}" readonly>
+            <input type="text" class="form-control" id="id" name="id" value="${productId}" readonly>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Tên Sản Phẩm</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" value="${productName}" required>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Mô Tả Sản Phẩm</label>
-            <input type="text" class="form-control" id="description" name="description" required>
+            <input type="text" class="form-control" id="description" name="description" value="${productDescription}" required>
         </div>
         <div class="mb-3">
             <label for="manufacturer" class="form-label">Nhà Sản Xuất</label>
-            <input type="text" class="form-control" id="manufacturer" name="manufacturer" required>
+            <input type="text" class="form-control" id="manufacturer" name="manufacturer" value="${productManufacturer}" required>
         </div>
         <button type="submit" class="btn btn-primary">Xác Nhận</button>
     </form>

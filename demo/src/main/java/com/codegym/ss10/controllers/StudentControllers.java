@@ -26,10 +26,12 @@ public class StudentControllers extends HttpServlet {
         switch (action) {
             case "create":
                 req.getRequestDispatcher("/student/create.jsp").forward(req, resp);
+                break;
             default:
                 List<Student> students = studentService.findAll();
                 req.setAttribute("students", students);
                 req.getRequestDispatcher("/student/list.jsp").forward(req, resp);
+                break;
         }
 
     }
@@ -48,7 +50,8 @@ public class StudentControllers extends HttpServlet {
                 Float points = Float.parseFloat(req.getParameter("point"));
                 Student student = new Student(name, address, points);
                 studentService.save(student);
-
+                resp.sendRedirect("/student");
+                break;
             case "delete":
                 Long id = Long.parseLong(req.getParameter("id"));
                 Boolean isDelete = studentService.deleteById(id);
@@ -60,6 +63,7 @@ public class StudentControllers extends HttpServlet {
                     req.setAttribute("students", students);
                     req.getRequestDispatcher("/student/list.jsp").forward(req, resp);
                 }
+                break;
         }
     }
 }

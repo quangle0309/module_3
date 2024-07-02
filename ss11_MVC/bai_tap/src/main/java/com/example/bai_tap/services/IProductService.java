@@ -13,7 +13,7 @@ public interface IProductService {
 
     List<Product> searchByName(String name);
 
-    boolean updateProduct(int id, String name, String description, String manufacturer);
+    boolean updateProduct(Product product);
 
     Product findById(int id);
 }
